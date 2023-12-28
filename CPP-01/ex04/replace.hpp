@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:55:43 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/28 04:02:07 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 03:41:31 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 class Replace
 {
     private:
-        std::string _i_file;
-        std::string _o_file;
+        std::string     _i_file;
+        std::string     _o_file;
+        std::ifstream   ifs;
+        std::ifstream   ofs;
     public:
         Replace(std::string i_file);
         ~Replace(void);

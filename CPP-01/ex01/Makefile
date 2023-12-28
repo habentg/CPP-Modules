@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 06:45:37 by hatesfam          #+#    #+#              #
-#    Updated: 2023/12/28 05:17:52 by hatesfam         ###   ########.fr        #
+#    Updated: 2023/12/28 03:31:52 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	$(CC) $(FLAGS) $(OBJ_FILES) -o $(NAME)
-	echo "Zombie horde created!"
 
 clean:
 	$(RM) $(OBJ_FILES)

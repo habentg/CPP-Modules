@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:57:56 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/28 04:42:52 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 03:50:11 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,69 @@ Replace::~Replace(void)
 */
 void    Replace::replaceString(std::string find, std::string replce)
 {
-    std::ifstream   infile(this->_i_file);
-    if (infile.is_open())
+    this->ifs.open(this->_i_file.c_str(), std::ifstream::in);
+    if (this->ifs.good())
     {
         std::string entireFileContent;
-        if (std::getline(infile, entireFileContent, '\0'))
+        if (std::getline(this->ifs, entireFileContent, '\0'))
         {
-            std::ofstream   outfile(this->_o_file);
-            size_t  occurrence = entireFileContent.find(find);
-            while (occurrence != std::string::npos)
+            this->ofs.open(this->_o_file.c_str(), std::ofstream::out | std::ofstream::trunc);
+            if (this->ofs.fail())
             {
-                entireFileContent.erase(occurrence, find.length());
-                entireFileContent.insert(occurrence, replce);
-                occurrence = entireFileContent.find(find);
+                std::cerr << "ERROR: Can't open output file!" << std::endl;
             }
-            outfile << entireFileContent;
-            outfile.close();
+            else
+            {
+                size_t  occurrence = entireFileContent.find(find);
+                while (occurrence != std::string::npos)
+                {
+                    entireFileContent.erase(occurrence, find.length());
+                    entireFileContent.insert(occurrence, replce);
+                    occurrence = entireFileContent.find(find);
+                }
+                this->ofs << entireFileContent;
+            }
+            this->ofs.close();
         }
         else
         {
-            std::cerr << "ERROR: Empty Input file!" << std::endl;
-            exit(1);            
+            std::cerr << "ERROR: Empty Input file!" << std::endl;       
         }
-        infile.close();
     }
     else
     {
         std::cerr << "ERROR: Couldnt open Input file!" << std::endl;
-        exit(1);
     }
+    this->ifs.close();
 };
+// void    Replace::replaceString(std::string find, std::string replce)
+// {
+//     std::ifstream   infile(this->_i_file);
+//     if (infile.is_open())
+//     {
+//         std::string entireFileContent;
+//         if (std::getline(infile, entireFileContent, '\0'))
+//         {
+//             std::ofstream   outfile(this->_o_file);
+//             size_t  occurrence = entireFileContent.find(find);
+//             while (occurrence != std::string::npos)
+//             {
+//                 entireFileContent.erase(occurrence, find.length());
+//                 entireFileContent.insert(occurrence, replce);
+//                 occurrence = entireFileContent.find(find);
+//             }
+//             outfile << entireFileContent;
+//             outfile.close();
+//         }
+//         else
+//         {
+//             std::cerr << "ERROR: Empty Input file!" << std::endl;       
+//         }
+//         infile.close();
+//     }
+//     else
+//     {
+//         std::cerr << "ERROR: Couldnt open Input file!" << std::endl;
+//     }
+// };
 
