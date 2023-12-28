@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:57:56 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/28 03:50:11 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 07:56:29 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ Replace::~Replace(void)
 */
 void    Replace::replaceString(std::string find, std::string replce)
 {
+    std::string entireFileContent;
+    
     this->ifs.open(this->_i_file.c_str(), std::ifstream::in);
     if (this->ifs.good())
     {
-        std::string entireFileContent;
         if (std::getline(this->ifs, entireFileContent, '\0'))
         {
             this->ofs.open(this->_o_file.c_str(), std::ofstream::out | std::ofstream::trunc);
