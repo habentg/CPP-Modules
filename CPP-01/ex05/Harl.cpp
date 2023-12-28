@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 05:39:29 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/28 05:44:59 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 08:12:59 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,14 @@ void    Harl::error( void ) {
 // real one
 void Harl::complain( std::string level )
 {
-    std::cout << "this is the complain func!!" << std::endl;
+    func  members[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    for (int i = 0; i < 4; i++)
+    {
+        if (levels[i].compare(level) == 0)
+        {
+            (this->*members[i])();
+            return ;
+        }
+    }
 }

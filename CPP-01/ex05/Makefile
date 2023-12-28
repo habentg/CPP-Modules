@@ -6,12 +6,12 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 04:45:45 by hatesfam          #+#    #+#              #
-#    Updated: 2023/12/28 05:36:41 by hatesfam         ###   ########.fr        #
+#    Updated: 2023/12/28 08:18:37 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME	= replace
+NAME	= harl
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
