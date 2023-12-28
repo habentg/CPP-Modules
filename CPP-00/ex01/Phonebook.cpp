@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 06:31:24 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/28 03:25:29 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 11:20:20 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ std::string  PhoneBook::acceptInput(std::string task)
         if (std::cin.eof())
         {
             std::cout << "EOF - Invalid input." << std::endl;
-            return NULL;
+            std::exit(1);
         }
         if (task == "Phone Number: ")
             i = PhoneBook::validatePhoneNum(input);
@@ -185,7 +185,7 @@ int accept_index(void)
         if (std::cin.eof())
         {
             std::cout << "EOF - Invalid input. Exiting ...." << std::endl;
-           return 1;
+            std::exit(1);
         }
         if (input.length() > 1 || !(std::isdigit(input[0])) || (input[0] - '0') < 0 || (input[0] - '0') > 7)
         {

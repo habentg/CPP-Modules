@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 06:31:58 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/27 06:20:01 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/28 11:19:43 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "Contact.hpp"
 # include <iostream>
 # include <string>
-#include <iomanip>
+# include <iomanip>
+# include <cstdlib>
 
 class PhoneBook
 {
@@ -38,4 +39,5 @@ class PhoneBook
 		void		print_message(int i, std::string f_name, std::string l_name, std::string n_name) const;
 		void 		print_contact(int num) const;
 };
+
 #endif
