@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 07:34:25 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/27 09:20:49 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:53:17 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void    Zombie::announce(void)
 // creating a new Zombie on the heap using the new keyword
 Zombie* newZombie( std::string name )
 {
-    Zombie *zombie = new Zombie(name);
-    return (zombie);
+    Zombie *nz = new Zombie(name);
+    return (nz);
 }
 
 // creating a new Zombie on the heap and calling announce on it and then deleting it
 void randomChump( std::string name )
 {
-    Zombie *zombie = new Zombie(name);
-    zombie->announce();
-    delete zombie;
+    Zombie *rc = new Zombie(name);
+    rc->announce();
+    delete rc;
 }

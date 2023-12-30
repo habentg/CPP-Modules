@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:14:13 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/28 05:02:59 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:21:04 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class HumanB
 {
     private:
         std::string  _name;
-        Weapon* _weapon;
+        Weapon*     _weapon;
     public:
         HumanB(std::string name);
         ~HumanB(void);

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 07:33:53 by hatesfam          #+#    #+#             */
-/*   Updated: 2023/12/27 09:15:22 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:52:19 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Zombie
         ~Zombie(void);
         void    announce(void);
 };
+
 Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+void    randomChump( std::string name );
+
 #endif
