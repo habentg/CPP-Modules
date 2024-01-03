@@ -6,18 +6,18 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 06:56:38 by hatesfam          #+#    #+#              #
-#    Updated: 2023/12/30 19:36:11 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/03 18:21:45 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fixedpt
+NAME	= frag
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 OBJDIR = obj
-SRC 	  = main.cpp Fixed.cpp
+SRC 	  = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 

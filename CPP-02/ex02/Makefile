@@ -6,11 +6,11 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 06:56:38 by hatesfam          #+#    #+#              #
-#    Updated: 2023/12/30 19:36:11 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/02 16:34:44 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fixedpt
+NAME	= fixed
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
