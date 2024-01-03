@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:49:33 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/03 16:57:17 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/03 20:48:05 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
                             **    Orthodox Canonical Form  **
    ########################################################################################*/
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
     std::cout << "ScavTrap Constructor: Default" << std::endl;
 }
-ScavTrap::ScavTrap(std::string name)
-    : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
     this->setAttDamagePoint(20);
     this->setHitPoint(100);
@@ -34,7 +33,7 @@ ScavTrap::~ScavTrap(void)
     std::cout << "ScavTrap Destructor called." << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& cpy)
+ScavTrap::ScavTrap(const ScavTrap& cpy) : ClapTrap()
 {
     *this = cpy;
     std::cout << " ScavTrap Copy Constructor called." << std::endl;
@@ -58,11 +57,18 @@ ScavTrap&   ScavTrap::operator=(const ScavTrap& rhs)
    ########################################################################################*/
 
 void    ScavTrap::attack(const std::string& target) {
-    if (this->getEnrgPoint() <= 0)
-        std::cout << "ScavTrap " << this->getName() << " has 0 energy points!" << std::endl;
-    else {
+    if (this->getEnrgPoint() <= 0 || this->getHitPoint() <= 0) {
+        if (this->getHitPoint() <= 0)
+            std::cout << "ScavTrap " << this->getName() << " cant Attack, He is DEAD!" << std::endl;
+        else
+            std::cout << "ScavTrap " << this->getName() << " cant Attack, He is out of ENERGY!" << std::endl;
+    }
+    else
+    {
         std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttDamagePoint() << " points of damage!" << std::endl;
-        this->setEnrgPoint(this->getEnrgPoint() - 1);
+        this->setEnrgPoint(this->getEnrgPoint() - 1);;
+        if (this->getEnrgPoint() <= 0)
+            std::cout << "Warning: ScavTrap " << this->getName() << " Exhousted its ENERGY!" << std::endl;
     }
 }
 

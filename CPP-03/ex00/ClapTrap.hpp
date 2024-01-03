@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:46:44 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/03 18:26:14 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/03 20:17:13 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ class ClapTrap
         unsigned int	_hit_p;
         unsigned int	_enrg_p;
         unsigned int	_att_damage_p;
+        
+        static const unsigned int     defaultHitP = 10;
+		static const unsigned int     defaultEnergyP = 10;
+		static const unsigned int     defaultAttackDamage = 0;
 
     public:
     //Ortodox Canonical Form

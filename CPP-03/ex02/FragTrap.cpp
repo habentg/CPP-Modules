@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 18:19:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/03 18:40:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/03 19:30:36 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
                             **    Orthodox Canonical Form  **
    ########################################################################################*/
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap()
 {
     std::cout << "FragTrap Constructor: Default" << std::endl;
 }
@@ -34,7 +34,7 @@ FragTrap::~FragTrap(void)
     std::cout << "FragTrap Destructor called." << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& cpy)
+FragTrap::FragTrap(const FragTrap& cpy) : ClapTrap()
 {
     *this = cpy;
     std::cout << " FragTrap Copy Constructor called." << std::endl;
