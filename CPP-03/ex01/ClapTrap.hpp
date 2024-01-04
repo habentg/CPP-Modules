@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:46:44 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/03 20:43:23 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:34:40 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ClapTrap
         ClapTrap(void);
         ClapTrap(std::string name);
         ClapTrap(const ClapTrap& copy);
-        ~ClapTrap(void);
+        virtual ~ClapTrap(void);
         ClapTrap&   operator=(const ClapTrap& rhs);
     // setter and getters
         std::string		getName(void) const;
