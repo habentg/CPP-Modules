@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:20:55 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/04 18:35:07 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:00:10 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Animal
         Animal(const Animal& cpy);
         Animal& operator=(const Animal& cpy);
         virtual ~Animal(void);
+        void makeSound(void);
 };
 
 // class Cat: public Animal
