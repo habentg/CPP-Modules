@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 16:20:55 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/05 16:59:21 by hatesfam         ###   ########.fr       */
+/*   Created: 2024/01/06 18:11:12 by hatesfam          #+#    #+#             */
+/*   Updated: 2024/01/07 00:59:02 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-#include <iostream>
 #include <string>
+#include <iostream>
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Animal
+class Ice : public AMateria
 {
-    protected:
-        std::string type;
+    private:
     public:
-        Animal(void);
-        Animal(std::string type);
-        Animal(const Animal& cpy);
-        Animal& operator=(const Animal& cpy);
-        virtual ~Animal(void);
-        virtual void makeSound(void) const;
-        std::string getType(void) const;
+        Ice(void);
+        Ice(const Ice& cpy);
+        Ice&   operator=(const Ice& rhs);
+        ~Ice(void);
+        AMateria* clone() const;
+        void use(ICharacter& target);
 };
 
-#endif // !ANIMAL_HPP
+
+#endif // ICE_HPP
