@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 06:56:38 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/05 18:11:34 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/07 19:56:37 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 OBJDIR = obj
-SRC 	  = main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRC 	  = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 

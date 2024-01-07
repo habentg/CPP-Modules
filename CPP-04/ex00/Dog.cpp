@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:01:50 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/05 18:22:49 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 19:42:34 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ Dog::~Dog(void) {
     std::cout  << "{"  << this->getType() << "}" << " Dog Destructor called." << std::endl;
 }
 
-Dog::Dog(const Dog& cpy) {
+Dog::Dog(const Dog& cpy) : Animal("Dog") {
     *this = cpy;
-    std::cout  << "{"  << this->getType() << "}" << " Copy constructor called." << std::endl;
+    std::cout  << "{"  << this->getType() << "}" << " Dog Copy constructor called." << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& rhs) {
-    std::cout  << "{"  << this->getType() << "}" << " Copy Assignment Operator called." << std::endl;
+    std::cout  << "{"  << this->getType() << "}" << " Dog Copy Assignment Operator called." << std::endl;
     if (this != &rhs)
         this->type = rhs.type;
     return *this;

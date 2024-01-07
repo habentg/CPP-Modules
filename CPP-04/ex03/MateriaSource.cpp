@@ -18,7 +18,7 @@ MateriaSource::MateriaSource(void) {
     {
         this->_m_arr[i] = NULL;
     }
-    std::cout << "# MateriaSource Constructor Called #" << std::endl;
+    // std::cout << "# MateriaSource Constructor Called #" << std::endl;
 }
 // destructor
 MateriaSource::~MateriaSource(void) {
@@ -30,11 +30,11 @@ MateriaSource::~MateriaSource(void) {
             this->_m_arr[i] = NULL;
         }
     }
-    std::cout << "# MateriaSource Destructor Called #" << std::endl;
+    // std::cout << "# MateriaSource Destructor Called #" << std::endl;
 }
 // copy constructor
 MateriaSource::MateriaSource(const MateriaSource& cpy) {
-    std::cout << "# MateriaSource Copy Constructor Called #" << std::endl;
+    // std::cout << "# MateriaSource Copy Constructor Called #" << std::endl;
     *this = cpy;
 }
 // copy assignment operator
@@ -60,10 +60,10 @@ void    MateriaSource::learnMateria(AMateria* toBeLearned) {
     for (size_t i = 0; i < 4; i++) {
         if (this->_m_arr[i] == NULL) {
             this->_m_arr[i] = toBeLearned;
-            std::cout << "# MateriaSource learned " << toBeLearned->getType() << " #" << std::endl;
+            // std::cout << "# MateriaSource learned " << toBeLearned->getType() << " #" << std::endl;
             return ;
         }
-            std::cout << "# MateriaSource can't learn " << toBeLearned->getType() << " #" << std::endl;
+            // std::cout << "# MateriaSource can't learn " << toBeLearned->getType() << " #" << std::endl;
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:00:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/05 20:20:22 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:19:38 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Cat::~Cat(void) {
     std::cout  << "{"  << this->getType() << "}" << " Cat Destructor called." << std::endl;
 }
 
-Cat::Cat(const Cat& cpy) {
+Cat::Cat(const Cat& cpy) : Animal("cat") {
     *this = cpy;
     std::cout  << "{"  << this->getType() << "}" << " Copy constructor called." << std::endl;
 }

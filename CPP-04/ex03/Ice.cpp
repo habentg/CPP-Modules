@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:10:55 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 00:59:52 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 19:20:11 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 // default constructor
 Ice::Ice(void) : AMateria("ice") {
-    std::cout << "# Ice Constructor Called #" << std::endl;
+    // std::cout << "# Ice Constructor Called #" << std::endl;
 }
 // copy constructor
 Ice::Ice(const Ice& cpy) : AMateria("ice"){
-    std::cout << "# Ice Copy Constructor Called #" << std::endl;
+    // std::cout << "# Ice Copy Constructor Called #" << std::endl;
     *this = cpy;
 }
 // copy assignment operator
@@ -29,7 +29,7 @@ Ice& Ice::operator=(const Ice& rhs) {
 }
 // destructor
 Ice::~Ice(void) {
-    std::cout << "# Ice Destructor Called #" << std::endl;
+    // std::cout << "# Ice Destructor Called #" << std::endl;
 }
 // --------------------member func -----------------------------
 // clone() -- pure virtual function from 'AMateria'; 

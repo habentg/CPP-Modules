@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:58:19 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 19:32:09 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 19:54:56 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Cat: public Animal
+class WrongCat: public WrongAnimal
 {
     public:
-        Cat(void);
-        Cat(std::string type);
-        Cat(const Cat& cpy);
-        Cat& operator=(const Cat& cpy);
-        ~Cat(void);
+        WrongCat(void);
+        WrongCat(std::string type);
+        WrongCat(const WrongCat& cpy);
+        WrongCat& operator=(const WrongCat& cpy);
+        ~WrongCat(void);
         // overriding makeSound() from Animal
         void    makeSound(void) const;
 };
 
-#endif // !CAT_HPP
+#endif // !WRONGCAT_HPP

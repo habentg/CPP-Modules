@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:14:15 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/05 20:24:04 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:54:21 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ Brain& Brain::operator=(const Brain& rhs) {
         } 
     }
     return *this;
+}
+
+void    Brain::fillIdeas(std::string idea) {
+    for (size_t i = 0; i < 100; i++)
+    {
+        this->_ideas[i] = idea;
+    }
 }

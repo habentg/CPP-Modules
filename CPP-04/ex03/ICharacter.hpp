@@ -6,17 +6,18 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:30:02 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 01:01:43 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 18:19:09 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
+#include "AMateria.hpp"
 #include <string>
 #include <iostream>
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+
+class AMateria;
 
 class ICharacter
 {
@@ -28,4 +29,4 @@ class ICharacter
         virtual void use(int idx, ICharacter& target) = 0;
 };
 
-#endif // !CURE_HPP
+#endif // !ICHARACTER_HPP

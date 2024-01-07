@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:01:50 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/05 20:27:56 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:19:47 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Dog::~Dog(void) {
     std::cout  << "{"  << this->getType() << "}" << " Dog Destructor called." << std::endl;
 }
 
-Dog::Dog(const Dog& cpy) {
+Dog::Dog(const Dog& cpy) : Animal("dog")  {
     *this = cpy;
     std::cout  << "{"  << this->getType() << "}" << " Copy constructor called." << std::endl;
 }

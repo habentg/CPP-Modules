@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:10:55 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 01:01:12 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/07 19:20:06 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 // default constructor
 Cure::Cure(void) : AMateria("cure") {
-    std::cout << "# Cure Constructor Called #" << std::endl;
+    // std::cout << "# Cure Constructor Called #" << std::endl;
 }
 // copy constructor
 Cure::Cure(const Cure& cpy) : AMateria("cure"){
-    std::cout << "# Cure Copy Constructor Called #" << std::endl;
+    // std::cout << "# Cure Copy Constructor Called #" << std::endl;
     *this = cpy;
 }
 // copy assignment operator
@@ -29,7 +29,7 @@ Cure& Cure::operator=(const Cure& rhs) {
 }
 // destructor
 Cure::~Cure(void) {
-    std::cout << "# Cure Destructor Called #" << std::endl;
+    // std::cout << "# Cure Destructor Called #" << std::endl;
 }
 // --------------------member func -----------------------------
 // clone() -- pure virtual function from 'AMateria'; 
