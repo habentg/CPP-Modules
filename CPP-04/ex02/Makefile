@@ -6,14 +6,14 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 06:56:38 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/07 20:20:18 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/09 22:21:28 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= brain
+NAME	= abstract_class
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 OBJDIR = obj

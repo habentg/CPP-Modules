@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:20:55 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:13:12 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:18:10 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Animal
         Animal(const Animal& cpy);
         Animal& operator=(const Animal& cpy);
         virtual ~Animal(void);
-        // member func
-        virtual void makeSound(void) const = 0; // makes the class abtract
+        // member functions
+        virtual void makeSound(void) const = 0;
         std::string getType(void) const;
 };
 

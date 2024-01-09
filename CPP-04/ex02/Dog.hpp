@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:59:33 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:19:51 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:17:09 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 class Dog: public Animal
 {
     private:
-        Brain* _d_brain;
+        Brain*  _d_brain;
     public:
         Dog(void);
         Dog(std::string type);
         Dog(const Dog& cpy);
         Dog& operator=(const Dog& cpy);
         ~Dog(void);
-        void    makeSound(void) const;
-    
+        // overriding makeSound() from Animal
+        void        makeSound(void) const;
+        std::string getIdea(int index) const;
 };
-
 #endif // !DOG_HPP

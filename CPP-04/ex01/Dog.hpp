@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:59:33 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:55:16 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:17:09 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Dog: public Animal
         Dog& operator=(const Dog& cpy);
         ~Dog(void);
         // overriding makeSound() from Animal
-        void    makeSound(void) const;
-    
+        void        makeSound(void) const;
+        std::string getIdea(int index) const;
 };
 #endif // !DOG_HPP

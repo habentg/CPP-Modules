@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:58:19 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 21:12:20 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:55:49 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ class Cat: public Animal
         ~Cat(void);
         // overriding makeSound() from Animal
         void    makeSound(void) const;
-        std::string     getIdea() const;
-        void            setIdea();
+        std::string     getIdea(int index) const;
 };
 
 #endif // !CAT_HPP

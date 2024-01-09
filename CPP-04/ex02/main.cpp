@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:20:31 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:08:33 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:20:57 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,24 @@
 
 int main(void)
 {
-    const Animal* a = new Animal();
-    const Animal* d = new Dog("d-dog");
-    const Animal* c = new Cat();
-    std::cout << "the a object type: " << a->getType() << " " << std::endl;
-    std::cout << "the d object type: " << d->getType() << " " << std::endl;
-    std::cout << "the c object type: " << c->getType() << " " << std::endl;
-    d->makeSound(); //will output the cat sound!
+    // const Animal* animla = new Animal();
+    const Dog* d = new Dog();
+    const Cat* c = new Cat();
+    
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << "the d object type: " << d->getType() << " and it sounds as: ";
+    d->makeSound();
+    std::cout << std::endl;
+    std::cout << "the d object idea: " << d->getIdea(0) << std::endl;
+    
+    std::cout << std::endl;
+    std::cout << "the c object type: " << c->getType() << " and it sounds as: ";
     c->makeSound();
-    a->makeSound();
-    delete a;
+    std::cout << std::endl;
+    std::cout << "the c object idea: " << c->getIdea(0) << std::endl;
+    std::cout << std::endl;
+    
     delete d;
     delete c;
     return 0;

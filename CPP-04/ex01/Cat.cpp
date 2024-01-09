@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:00:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:54:15 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:14:53 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 Cat::Cat(void) : Animal("Cat") {
     this->_c_brain = new Brain();
+    this->_c_brain->fillIdeas("Cat idea");
     std::cout << "{DEFAULT} Cat type Constructor called." << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal(type) {
     this->_c_brain = new Brain();
+    this->_c_brain->fillIdeas(this->getType() + " idea");
     std::cout  << "{"  << this->getType() << "}" << " Cat type Constructor called." << std::endl;
 }
 
 Cat::~Cat(void) {
-    delete this->_c_brain;
+    if (this->_c_brain)
+        delete this->_c_brain;
     std::cout  << "{"  << this->getType() << "}" << " Cat Destructor called." << std::endl;
 }
 
@@ -39,15 +42,22 @@ Cat& Cat::operator=(const Cat& rhs) {
         this->type = rhs.type;
         if (rhs._c_brain)
         {
-            for (size_t i = 0; i < 100; i++)
-            {
-                this->_c_brain[i] = rhs._c_brain[i];
-            }  
+            this->_c_brain = new Brain();
+            *this->_c_brain =  *rhs._c_brain;
         }
     }
     return *this;
 }
 
 void Cat::makeSound(void) const {
-    std::cout << "Meowwwww." << std::endl;
+    std::cout << "Barkkkkkkkk." << std::endl;
+}
+
+std::string Cat::getIdea(int index) const {
+    if (index < 0 or index > 99)
+    {
+        std::cout << "index out of bound!" << std::endl;
+        return "";
+    }
+    return this->_c_brain->getAnIdea(index);
 }

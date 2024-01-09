@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:14:15 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:54:21 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:40:56 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,8 @@ void    Brain::fillIdeas(std::string idea) {
     {
         this->_ideas[i] = idea;
     }
+}
+
+std::string Brain::getAnIdea(int index) const {
+    return _ideas[index];
 }

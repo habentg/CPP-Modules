@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:01:50 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 20:55:22 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:58:28 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 Dog::Dog(void) : Animal("Dog") {
     this->_d_brain = new Brain();
+    this->_d_brain->fillIdeas("dog idea");
     std::cout << "{DEFAULT} Dog type Constructor called." << std::endl;
 }
 
 Dog::Dog(std::string type) : Animal(type) {
     this->_d_brain = new Brain();
+    this->_d_brain->fillIdeas(this->getType() + " idea");
     std::cout  << "{"  << this->getType() << "}" << " Dog type Constructor called." << std::endl;
 }
 
 Dog::~Dog(void) {
-    delete this->_d_brain;
+    if (this->_d_brain)
+        delete this->_d_brain;
     std::cout  << "{"  << this->getType() << "}" << " Dog Destructor called." << std::endl;
 }
 
@@ -39,10 +42,8 @@ Dog& Dog::operator=(const Dog& rhs) {
         this->type = rhs.type;
         if (rhs._d_brain)
         {
-            for (size_t i = 0; i < 100; i++)
-            {
-                this->_d_brain[i] = rhs._d_brain[i];
-            }  
+            this->_d_brain = new Brain();
+            *this->_d_brain =  *rhs._d_brain;
         }
     }
     return *this;
@@ -50,4 +51,13 @@ Dog& Dog::operator=(const Dog& rhs) {
 
 void Dog::makeSound(void) const {
     std::cout << "Barkkkkkkkk." << std::endl;
+}
+
+std::string Dog::getIdea(int index) const {
+    if (index < 0 or index > 99)
+    {
+        std::cout << "index out of bound!" << std::endl;
+        return "";
+    }
+    return this->_d_brain->getAnIdea(index);
 }
