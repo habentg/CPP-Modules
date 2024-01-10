@@ -5,20 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/28 06:56:38 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/10 04:02:13 by hatesfam         ###   ########.fr        #
+#    Created: 2024/01/10 03:25:29 by hatesfam          #+#    #+#              #
+#    Updated: 2024/01/10 10:16:05 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= f
+NAME	= form
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Werror -Wextra -std=c++98
 RM		= rm -rf
 
-OBJDIR = obj
-SRC 	  = main.cpp Fixed.cpp
-
+SRC		= main.cpp Bureaucrat.cpp Form.cpp
+OBJDIR	= obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 $(OBJDIR)/%.o: %.cpp
@@ -30,8 +29,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(CC) $(FLAGS) $(OBJ_FILES) -o $(NAME)
 
-clean:
-	$(RM) $(OBJ_FILES)
+clean: $(OBJDIR)
 	$(RM) $(OBJDIR)
 
 fclean: clean
@@ -39,4 +37,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean phony re	

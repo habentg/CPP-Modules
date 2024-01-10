@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 04:26:27 by hatesfam          #+#    #+#              #
-#    Updated: 2023/12/27 09:54:01 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/10 04:02:13 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean re

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:00:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/09 22:14:53 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:50:45 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Cat& Cat::operator=(const Cat& rhs) {
 }
 
 void Cat::makeSound(void) const {
-    std::cout << "Barkkkkkkkk." << std::endl;
+    std::cout << "Me0wwwwww." << std::endl;
 }
 
 std::string Cat::getIdea(int index) const {

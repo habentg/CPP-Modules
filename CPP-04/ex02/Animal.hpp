@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:20:55 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/09 22:18:10 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:47:43 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Animal
         Animal& operator=(const Animal& cpy);
         virtual ~Animal(void);
         // member functions
-        virtual void makeSound(void) const = 0;
+        virtual void makeSound(void) const = 0; // makes the class abstract
         std::string getType(void) const;
 };
 

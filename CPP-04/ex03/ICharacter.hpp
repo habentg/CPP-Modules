@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:30:02 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 18:19:09 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/09 22:48:52 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ class ICharacter
         virtual void unequip(int idx) = 0;
         virtual void use(int idx, ICharacter& target) = 0;
 };
-
+// interface - all methods are pure virtual
 #endif // !ICHARACTER_HPP
