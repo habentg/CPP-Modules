@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 19:20:07 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 19:20:52 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:29:49 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void Character::equip(AMateria* m) {
             // std::cout << "# " << this->_name << ": equiped at index " << i << " #" << std::endl;
             return ;
         }
+        // somethig has to happen
     }
     // std::cout << "# " << this->_name << ": cant be equiped! #" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 06:45:42 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/10 10:24:41 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:47:22 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(void)
 {
     try {
-        Bureaucrat bureau("haben", 13);
+        Bureaucrat bureau("haben", 3);
         Form form("doc");
 
         bureau.signForm(form);
@@ -26,11 +26,11 @@ int main(void)
     }
     catch (Bureaucrat::GradeTooHighException &e)
     {
-        std::cout << e.whatCustom() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     catch (Bureaucrat::GradeTooLowException &e)
     {
-        std::cout << e.whatCustom() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     catch (int code)
     {

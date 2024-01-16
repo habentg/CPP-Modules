@@ -6,31 +6,61 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 06:45:42 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/10 10:24:41 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:07:15 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
     try {
-        Bureaucrat bureau("haben", 13);
-        Form form("doc");
+        Bureaucrat bureau("haben", 23);
+        // ShrubberyCreationForm shrub("shrubbery");
+        PresidentialPardonForm     rob("robot");
 
-        bureau.signForm(form);
-        std::cout << bureau << std::endl;
-        std::cout << form << std::endl;
+        // std::cout << shrub << std::endl;
+        // bureau.signForm(shrub);
+        // bureau.executeForm(shrub);        
+        bureau.signForm(rob);
+        // std::cout << "bureau's grade: " << bureau.getGrade() << std::endl;
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        bureau.executeForm(rob);        
+        std::cout << rob << std::endl;
 
     }
     catch (Bureaucrat::GradeTooHighException &e)
     {
-        std::cout << e.whatCustom() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     catch (Bureaucrat::GradeTooLowException &e)
     {
-        std::cout << e.whatCustom() << std::endl;
+        std::cout << e.what() << std::endl;
+    }
+    catch (AForm::GradeTooHighException &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    catch (AForm::GradeTooLowException &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    catch (AForm::FormNotSignedException &e)
+    {
+        std::cout << e.what() << std::endl;
     }
     catch (int code)
     {

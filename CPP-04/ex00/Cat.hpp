@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:58:19 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 19:32:09 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:56:02 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Cat: public Animal
 {
     public:
         Cat(void);
-        Cat(std::string type);
         Cat(const Cat& cpy);
         Cat& operator=(const Cat& cpy);
         ~Cat(void);

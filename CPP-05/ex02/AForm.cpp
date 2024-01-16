@@ -16,18 +16,18 @@ const int AForm::grade_required_sign = 10;
 const int AForm::grade_required_execute = 5;
 // -------------------------------Orthodox Canonical AForm---------------------------------
 // default consturctor
-AForm::AForm(void)
-    : _name("defaultAForm"), _isSigned(false), _grade_sign(grade_required_sign), _grade_exec(grade_required_execute)
-{
-    if (this->_grade_sign > 150 || this->_grade_exec > 150)
-        throw AForm::GradeTooLowException();
-    if (this->_grade_sign < 1 || this->_grade_exec < 1)
-        throw AForm::GradeTooHighException();
-    // std::cout << this->_name << " AForm default constructor" << std::endl;
-}
+// AForm::AForm(void)
+//     : _name("defaultAForm"), _isSigned(false), _grade_sign(grade_required_sign), _grade_exec(grade_required_execute)
+// {
+//     if (this->_grade_sign > 150 || this->_grade_exec > 150)
+//         throw AForm::GradeTooLowException();
+//     if (this->_grade_sign < 1 || this->_grade_exec < 1)
+//         throw AForm::GradeTooHighException();
+//     // std::cout << this->_name << " AForm default constructor" << std::endl;
+// }
 // parameterized constructor
-AForm::AForm(std::string name)
-    : _name(name), _isSigned(false), _grade_sign(grade_required_sign), _grade_exec(grade_required_execute)
+AForm::AForm(std::string name, int g_sign, int g_exec)
+    : _name(name), _isSigned(false), _grade_sign(g_sign), _grade_exec(g_exec)
 {
     if (this->_grade_sign > 150 || this->_grade_exec > 150)
         throw AForm::GradeTooLowException();
@@ -37,7 +37,7 @@ AForm::AForm(std::string name)
 }
 // copy constructor
 AForm::AForm(const AForm& cpy)
-    : _name("defaultAForm"), _grade_sign(grade_required_sign), _grade_exec(grade_required_execute)
+    : _name(cpy.getName()), _grade_sign(cpy.getGradeSign()), _grade_exec(cpy.getGradeExcec())
  {
     // std::cout << this->_name << " AForm copy constructor" << std::endl;
     *this = cpy;
@@ -57,8 +57,9 @@ AForm::~AForm(void) {
 }
 // insertion (<<) overloader - basicly creating an outfile stream that cout recognizes to desplay.
 std::ostream& operator<<(std::ostream& os, const AForm& rhs) {
-    std::string output =  rhs.getName() + " AForm needs {" + std::to_string(rhs.getGradeSign()) + "} grade to be signed and it needs {" + std::to_string(rhs.getGradeExcec()) + "} grade to be executed. But is it Signed: " + std::to_string(rhs.getIsSigned());
-    os << output;
+    std::stringstream ss;
+    ss << rhs.getName() << " AForm needs {" << rhs.getGradeSign() << "} grade to be signed and it needs {" << rhs.getGradeExcec() << "} grade to be executed. But is it Signed: " << rhs.getIsSigned();
+    os << ss.str();
     return os;
 }
 // --------------------------------member functions----------------------------
@@ -82,10 +83,16 @@ void    AForm::beSigned(Bureaucrat& bureau) {
     else
         throw AForm::GradeTooLowException();
 }
-// incrementing the grade of the  AForm 1 is the hights and 150 is the lowest
-const char* AForm::GradeTooHighException::whatCustom(void) const throw() {
-    return "AForm's Grade is too High!";
+void    AForm::setSigned(bool tf) {
+    this->_isSigned = tf;
 }
-const char* AForm::GradeTooLowException::whatCustom(void) const throw(){
-    return "AForm's Grade is too Low!";
+// incrementing the grade of the  AForm 1 is the hights and 150 is the lowest
+const char* AForm::GradeTooHighException::what(void) const throw() {
+    return "Grade is too High!";
+}
+const char* AForm::GradeTooLowException::what(void) const throw(){
+    return "Grade is too Low!";
+}
+const char* AForm::FormNotSignedException::what(void) const throw(){
+    return "Form is not signed!";
 }

@@ -6,17 +6,17 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/10 03:25:29 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/10 10:16:05 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/12 03:57:53 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= form
+NAME	= aform
 
 CC		= c++
 FLAGS	= -Wall -Werror -Wextra -std=c++98
 RM		= rm -rf
 
-SRC		= main.cpp Bureaucrat.cpp Form.cpp
+SRC		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJDIR	= obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 

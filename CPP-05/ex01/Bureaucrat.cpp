@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 02:59:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/10 10:34:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:48:24 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 // -------------------------------Orthodox Canonical Form---------------------------------
 // default consturctor
-Bureaucrat::Bureaucrat(void) : _name("default"), _grade(1) {
-    // std::cout << this->_name << " Bureaucrat default constructor" << std::endl;
-}
+// Bureaucrat::Bureaucrat(void) : _name("default"), _grade(1) {
+//     // std::cout << this->_name << " Bureaucrat default constructor" << std::endl;
+// }
 // parameterized constructor
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     if (grade > 150)
         throw Bureaucrat::GradeTooLowException();
     if (grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    // if (grade > 150)
-    //     throw 4.5;
-    // if (grade < 1)
-    //     throw "Exception: grade too High!";
     this->_grade = grade; 
     // std::cout << this->_name << " Bureaucrat default constructor" << std::endl;
 }
@@ -51,8 +47,9 @@ Bureaucrat::~Bureaucrat(void) {
 }
 // insertion (<<) overloader - basicly creating an outfile stream that cout recognizes to desplay.
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
-    std::string output =  rhs.getName() + ", grade is " + std::to_string(rhs.getGrade());
-    os << output;
+    std::stringstream ss;
+    ss << rhs.getName() << ", grade is " << rhs.getGrade();
+    os << ss.str();
     return os;
 }
 // --------------------------------member functions----------------------------
@@ -83,14 +80,14 @@ void    Bureaucrat::signForm(Form& form) {
         form.beSigned(*this);
         std::cout << this->getName() << " has signed " << form.getName() << std::endl;
     } catch (Form::GradeTooLowException &e) {
-        std::cout << this->getName() << " could't sign " << form.getName() << "because he's grade is not high enough " << std::endl;
+        std::cout << this->getName() << " could't sign " << form.getName() << " because " << e.what() << std::endl;
     } catch (...) {
         std::cout << this->getName() << " just for protection " << std::endl;
     }
 }
-const char* Bureaucrat::GradeTooHighException::whatCustom(void) const throw() {
+const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
     return "Bureaucrat's Grade is too High!";
 }
-const char* Bureaucrat::GradeTooLowException::whatCustom(void) const throw(){
+const char* Bureaucrat::GradeTooLowException::what(void) const throw(){
     return "Bureaucrat's Grade is too Low!";
 }

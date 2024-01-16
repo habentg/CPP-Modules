@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:00:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 19:42:56 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:56:17 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 Cat::Cat(void) : Animal("Cat") {
     std::cout << "{DEFAULT} Cat type Constructor called." << std::endl;
-}
-
-Cat::Cat(std::string type) : Animal(type) {
-    std::cout  << "{"  << this->getType() << "}" << " Cat type Constructor called." << std::endl;
 }
 
 Cat::~Cat(void) {

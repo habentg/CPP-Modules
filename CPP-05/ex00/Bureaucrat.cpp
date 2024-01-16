@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 02:59:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/10 10:34:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:33:15 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // -------------------------------Orthodox Canonical Form---------------------------------
 // default consturctor
-Bureaucrat::Bureaucrat(void) : _name("default"), _grade(1) {
-    // std::cout << this->_name << " Bureaucrat default constructor" << std::endl;
-}
+// Bureaucrat::Bureaucrat(void) : _name("default"), _grade(1) {
+//     // std::cout << this->_name << " Bureaucrat default constructor" << std::endl;
+// }
 // parameterized constructor
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     if (grade > 150)
@@ -24,7 +24,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     if (grade < 1)
         throw Bureaucrat::GradeTooHighException();
     // if (grade > 150)
-    //     throw 4.5;
+    //     throw 4;
+    // if (grade > 150)
+    //     throw std::runtime_error("grade is more than 150");
     // if (grade < 1)
     //     throw "Exception: grade too High!";
     this->_grade = grade; 
@@ -51,8 +53,10 @@ Bureaucrat::~Bureaucrat(void) {
 }
 // insertion (<<) overloader - basicly creating an outfile stream that cout recognizes to desplay.
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
-    std::string output =  rhs.getName() + ", grade is " + std::to_string(rhs.getGrade());
-    os << output;
+    std::stringstream ss;
+
+    ss << rhs.getName() << ", grade is " << rhs.getGrade();
+    os << ss.str();
     return os;
 }
 // --------------------------------member functions----------------------------
@@ -78,9 +82,9 @@ void    Bureaucrat::decrementGrade(void) {
 
 }
 
-const char* Bureaucrat::GradeTooHighException::whatCustom(void) const throw() {
+const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
     return "Bureaucrat's Grade is too High!";
 }
-const char* Bureaucrat::GradeTooLowException::whatCustom(void) const throw(){
+const char* Bureaucrat::GradeTooLowException::what(void) const throw(){
     return "Bureaucrat's Grade is too Low!";
 }

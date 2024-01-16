@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:01:50 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 19:42:34 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:56:50 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 Dog::Dog(void) : Animal("Dog") {
     std::cout << "{DEFAULT} Dog Constructor called." << std::endl;
-}
-
-Dog::Dog(std::string type) : Animal(type) {
-    std::cout << "{"  << this->getType() << "}" << " Dog type Constructor called." << std::endl;
 }
 
 Dog::~Dog(void) {

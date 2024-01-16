@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:59:33 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/07 19:33:06 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:57:00 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Dog: public Animal
 {
     public:
         Dog(void);
-        Dog(std::string type);
         Dog(const Dog& cpy);
         Dog& operator=(const Dog& cpy);
         ~Dog(void);
