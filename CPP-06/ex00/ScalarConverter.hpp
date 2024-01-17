@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 04:00:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/15 19:08:44 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/17 06:14:55 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ typedef enum e_type {
     DOUBLE,   // double datatype
     PINFF,    // positive infinity FLOAT
     NINFF,    // Negative infinity FLOAT
+    NANNF,     // Non-Displayable FLOAT
     PINF,     // positive infinity DOUBLE
     NINF,     // Negative infinity DOUBLE
-    NANN,     // Negative infinity DOUBLE
+    NANN,     // Non-Displayable DOUBLE
 }   t_type;
 
 class ScalarConverter {

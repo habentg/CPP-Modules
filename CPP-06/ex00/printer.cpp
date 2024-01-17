@@ -6,21 +6,21 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:19:38 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/15 20:07:55 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/17 07:21:01 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 bool    isTypeLiteral(t_type tt) {
-    if (tt == NANN || tt == PINF || tt == PINFF || tt == NINF || tt == NINFF)
+    if (tt == NANN || tt == NANNF || tt == PINF || tt == PINFF || tt == NINF || tt == NINFF)
         return true;
     return false;
 }
 
 std::string ScalarConverter::printInt(void) const { 
     std::stringstream   ss;
-    if (this->_impossible || isTypeLiteral(this->_type))
+    if (this->_impossible || isTypeLiteral(this->_type) || (this->_int == -1 && (this->_int != static_cast<int>(this->_float))))
         ss << "Impossible";
     else
         ss << this->_int;
@@ -31,7 +31,14 @@ std::string ScalarConverter::printDouble(void) const {
     if (this->_impossible)
         ss << "Impossible";
     else if (isTypeLiteral(this->_type))
-        ss << "literals";
+    {
+        if (this->_type == NANN || this->_type == NANNF)   
+            ss << "nan";
+        else if (this->_type == PINFF || this->_type == PINF)
+            ss << "+inf";
+        else if (this->_type == NINFF || this->_type == NINF)
+            ss << "-inf";
+    }
     else {
         if (this->_float - static_cast< int > ( this->_float ) == 0 )
             ss << this->_float << ".0";
@@ -45,7 +52,14 @@ std::string ScalarConverter::printFloat(void) const {
     if (this->_impossible)
         ss << "Impossible";
     else if (isTypeLiteral(this->_type))
-        ss << "literals";
+    {
+        if (this->_type == NANN || this->_type == NANNF)   
+            ss << "nanf";
+        else if (this->_type == PINFF || this->_type == PINF)
+            ss << "+inff";
+        else if (this->_type == NINFF || this->_type == NINF)
+            ss << "-inff";
+    }
     else {
         if (this->_float - static_cast< int > ( this->_float ) == 0 )
             ss << this->_float << ".0f";
@@ -56,7 +70,7 @@ std::string ScalarConverter::printFloat(void) const {
 }
 std::string ScalarConverter::printChar(void) const {
     std::stringstream   ss;
-    if (this->_impossible || isTypeLiteral(this->_type))
+    if (this->_impossible || isTypeLiteral(this->_type) || (this->_char != static_cast<char>(this->_int)))
         ss << "Impossible";
     else if (this->_char < 32 || this->_char > 126)
         ss << "Non Displayable";

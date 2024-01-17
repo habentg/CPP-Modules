@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 15:08:03 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/15 19:55:28 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/17 07:30:08 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_type ScalarConverter::getType(void) const {
 }
 
 int ScalarConverter::isInputPsuedoLiteral(std::string& input) {
-    this->_type = UNKNOWN;
     if (!input.compare("+inff") || !input.compare("inff"))
         this->_type = PINFF;
     if (!input.compare("-inff"))
@@ -28,6 +27,8 @@ int ScalarConverter::isInputPsuedoLiteral(std::string& input) {
         this->_type = NINF;
     else if (!input.compare("nan"))
         this->_type = NANN;
+    else if (!input.compare("nanf"))
+        this->_type = NANNF;
     return this->_type;
 }
 
@@ -67,7 +68,13 @@ int ft_setInt(std::string& input) {
 }
 
 void ScalarConverter::castAndSet(t_type dt, std::string& input) {
-    if (dt == INT) {
+    if (dt == CHAR) {
+        this->_char = input[0];
+        this->_int = static_cast<int>(this->_char);
+        this->_float = static_cast<float>(this->_char);
+        this->_double = static_cast<double>(this->_char);
+    } // done
+    else if (dt == INT) {
         this->_int = ft_setInt(input);
         try 
         {
@@ -76,21 +83,14 @@ void ScalarConverter::castAndSet(t_type dt, std::string& input) {
                 this->_impossible = true;
                 return ;
             }
+            this->_char = static_cast<char>(this->_int);
+            this->_float = static_cast<float>(this->_int);
+            this->_double = static_cast<double>(this->_int);
         } catch (...)
         {
             this->_impossible = true;
-            return ;
         }
-        this->_char = static_cast<char>(this->_int);
-        this->_float = static_cast<float>(this->_int);
-        this->_double = static_cast<double>(this->_int);
-    }
-    else if (dt == CHAR) {
-        this->_char = input[0];
-        this->_int = static_cast<int>(this->_char);
-        this->_float = static_cast<float>(this->_char);
-        this->_double = static_cast<double>(this->_char);
-    }
+    } // done
     else if (dt == FLOAT) {
         this->_float = ft_setFloat(input);
         try 
@@ -100,15 +100,17 @@ void ScalarConverter::castAndSet(t_type dt, std::string& input) {
                 this->_impossible = true;
                 return ;
             }
+            this->_int = static_cast<int>(this->_float);
+            if (static_cast<double>(INT_MAX - 1) - static_cast<double>(this->_float) < 0 || static_cast<double>(INT_MIN + 1) - static_cast<double>(this->_float) > 0)
+                this->_int = -1;
+            if (this->_int <= 255 && this->_int >= 0)
+                this->_char = static_cast<char>(this->_float);
+            this->_double = static_cast<double>(this->_float);
         } catch (...)
         {
             this->_impossible = true;
-            return ;
         }
-        this->_char = static_cast<char>(this->_float);
-        this->_int = static_cast<int>(this->_float);
-        this->_double = static_cast<double>(this->_float);
-    }
+    } // done
     else if (dt == DOUBLE) {
         this->_double = ft_setDouble(input);
         try 
@@ -123,24 +125,22 @@ void ScalarConverter::castAndSet(t_type dt, std::string& input) {
             this->_impossible = true;
             return ;
         }
-        this->_char = static_cast<char>(this->_double);
         this->_int = static_cast<int>(this->_double);
-        long intChecker = std::stol(input);
-        std::cout << "long: " << intChecker << std::endl;
-        if (intChecker > INT_MAX || intChecker < INT_MIN)
-            this->_int = -1;
+        if (static_cast<double>(INT_MAX - 1) - static_cast<double>(this->_double) < 0 || static_cast<double>(INT_MIN + 1) - static_cast<double>(this->_double) > 0)
+                this->_int = -1;
+        if (this->_int <= 255 && this->_int >= 0)
+            this->_char = static_cast<char>(this->_double);
         this->_float = static_cast<float>(this->_double);
-        // if (static_cast<int>(this->_double) > INT_MAX || static_cast<int>(this->_double) < INT_MIN)
-        //     this->_int = -1;
-    }
-    
+    } // kinda done ---- need some review    
 }
 int ScalarConverter::isInputNumber(std::string& input) {
     int dotCount = 0;
     size_t i = 0;
     if (!input.compare("."))
         return 0;
-    for (i = 0; i < input.length(); i++)
+    if (input[0] == '-')
+        i = 1;
+    for (; i < input.length(); i++)
     {
         if (!std::isdigit(input[i]))
         {
@@ -166,6 +166,7 @@ int ScalarConverter::isInputNumber(std::string& input) {
 }
 
 int    ScalarConverter::setNumberType(std::string& input) {
+    this->_type = UNKNOWN;
     if (isInputPsuedoLiteral(input))
         return (1);
     if (isInputNumber(input))

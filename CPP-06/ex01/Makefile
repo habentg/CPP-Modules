@@ -6,17 +6,17 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 01:45:14 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/17 06:41:23 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/17 08:53:49 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = serialize
 
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM		= rm -rf
 
-SRC = main.cpp ScalarConverter.cpp InputType.cpp printer.cpp
+SRC = main.cpp Serializer.cpp
 OBJDIR = obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 $(OBJDIR)/%.o: %.cpp

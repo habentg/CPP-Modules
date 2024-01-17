@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Example.hpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 05:41:09 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/14 06:01:58 by hatesfam         ###   ########.fr       */
+/*   Created: 2024/01/17 10:05:28 by hatesfam          #+#    #+#             */
+/*   Updated: 2024/01/17 10:33:19 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXAMPLE_HPP
-#define EXAMPLE_HPP
+#include "Base.hpp"
 
-template <typename T>
-class Example {
-public:
-    Example(T value);
-    ~Example;
-    T getValue() const;
-
-private:
-    T data;
-};
-
-// Include the template implementation (definitions) here
-#include "Example.cpp"
-
-#endif  // EXAMPLE_HPP
+int main(void)
+{
+    Base* ptr = generate();
+    identify(ptr); // accepts a ptr
+    identify(*ptr); // accepts the object itself
+    delete ptr;
+}

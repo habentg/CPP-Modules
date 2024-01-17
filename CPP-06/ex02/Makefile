@@ -6,17 +6,17 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 01:45:14 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/14 05:42:51 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/17 10:06:44 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = temp
+NAME = identify
 
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM		= rm -rf
 
-SRC = main.cpp Example.cpp
+SRC = main.cpp Base.cpp
 OBJDIR = obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 $(OBJDIR)/%.o: %.cpp
