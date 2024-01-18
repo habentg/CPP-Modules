@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 04:00:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/17 06:14:55 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:17:21 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@
 #include <string>
 #include <cmath>
 #include <limits>
+#include <climits>
 #include <exception>
+#include <cstring>
+#include <stdlib.h>
+#include <iomanip>
 
 // my macros
 // # define INT_MAX 2147483647
@@ -34,8 +38,8 @@
 // } t_id;
 
 typedef enum e_type {
-    UNKNOWN,  // unknow datatype
-    CHAR,     // char datatype
+    UNKNOWN,  // unknow datatype 
+    CHAR,     // char datatype 
     INT,      // int datatype
     FLOAT,    // float datatype
     DOUBLE,   // double datatype
@@ -54,7 +58,7 @@ class ScalarConverter {
         float       _float;
         double      _double;
         t_type  _type;
-        std::string _input;
+        const char* _input;
         bool        _impossible;
         // t_id    _id[4];
     public:
@@ -64,27 +68,29 @@ class ScalarConverter {
         ~ScalarConverter();
         // static method
         std::string printer(char code) const;
-        static void convert(std::string& value);
+        static void convert(const char* value);
         // getter
-        t_type getType(void) const ;
+        t_type  getType(void) const ;
+        bool    isImpossible(void) const ;
         // custom exception class
         class UnknownType : public std::exception {
             public:
-                const char* whatCustom() const throw();
+                const char* what() const throw();
+        };
+        class isImpossibleToDisplay : public std::exception {
+            public:
+                const char* what() const throw();
         };
         // helper methods
-        t_type  setInputType(std::string& input);
-        int     setNumberType(std::string& input);
-        int     isInputPsuedoLiteral(std::string& input);
-        int     isInputNumber(std::string& input);
-        void    castAndSet(t_type dt, std::string& input);
+        t_type  setInputType(const char* input);
+        void    setNumberType(const char* input);
+        int     isInputPsuedoLiteral(const char* input);
+        void    castAndSet(t_type dt, const char* input);
         // printers
         std::string printChar(void) const;
         std::string printInt(void) const;
         std::string printFloat(void) const;
         std::string printDouble(void) const;
-
-void NewFunction(t_type dt, std::__1::string & input);
 };
 
 std::ostream &operator<<(std::ostream &os, const ScalarConverter &conv);

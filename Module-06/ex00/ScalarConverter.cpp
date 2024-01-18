@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:20:14 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/15 19:09:24 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:44:30 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ ScalarConverter ScalarConverter::operator=(const ScalarConverter& rhs)
 ScalarConverter::~ScalarConverter()
 { }
 
-const char* ScalarConverter::UnknownType::whatCustom() const throw()
+const char* ScalarConverter::UnknownType::what() const throw()
 {
     return "\nError: Unknown Datatype\n\n   ->enter char, int, float or double!!\n";
 }
+const char* ScalarConverter::isImpossibleToDisplay::what() const throw()
+{
+    return "\nError:\n\nImpossible to Display!!\n";
+}
 
-void ScalarConverter::convert(std::string& input)
+void ScalarConverter::convert(const char* input)
 {
     ScalarConverter conv;
 
@@ -56,6 +60,9 @@ void ScalarConverter::convert(std::string& input)
         std::cout << conv << std::endl; // if the datatpe is known, we diplay our casted values
     } catch (ScalarConverter::UnknownType &e)
     {
-        std::cout << e.whatCustom() << std::endl;
+        std::cout << e.what() << std::endl;
+    } catch (ScalarConverter::isImpossibleToDisplay &e)
+    {
+        std::cout << e.what() << std::endl;
     }
 }

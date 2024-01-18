@@ -6,17 +6,16 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:48:33 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/17 09:18:03 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:06:39 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-#include <cstdint>
 
 //NOTE: {error: 'uintptr_t' does not name a type}
 int main(void)
 {
-    std::string name = std::string("Haben");
+    std::string name = std::string("Abdulaziz nine in malaylam");
     Data* ourData = new Data(name, 24);
 
     std::cout << "\n----------------Serializing---------------------\n" << std::endl;

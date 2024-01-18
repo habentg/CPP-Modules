@@ -1,14 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Whatever.cpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 16:47:30 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/14 16:47:47 by hatesfam         ###   ########.fr       */
+/*   Created: 2024/01/18 11:36:35 by hatesfam          #+#    #+#             */
+/*   Updated: 2024/01/18 14:10:33 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Whatever.hpp"
+#include "Array.hpp"
 
+int main(void) {
+    Array<int> arr(7);
+    // std::cout << arr << std::endl;
+}

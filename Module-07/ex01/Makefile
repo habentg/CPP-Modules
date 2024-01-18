@@ -6,17 +6,17 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 01:45:14 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/17 08:53:49 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/18 11:45:07 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serialize
+NAME = iter
 
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM		= rm -rf
 
-SRC = main.cpp Serializer.cpp
+SRC = main.cpp
 OBJDIR = obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 $(OBJDIR)/%.o: %.cpp
@@ -36,4 +36,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean phony re	
+.PHONY: all clean fclean phony re

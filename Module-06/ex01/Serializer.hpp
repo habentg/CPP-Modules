@@ -17,7 +17,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <cstdint> 
+// #include <cstdint> 
+#include <stdint.h>
 
 // non empty Data class
     // => we need the name and age in order for the object to be instantiated

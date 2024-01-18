@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:35:03 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/17 10:32:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:20:49 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,10 @@ Base*   generate(void)
     // since dynamic casting checks if the casting is possible and returns 'nullptr' if its not possible, it's a perfect case to use it here.
 
 // identify the POINTER to an object
+// RTTI
 void    identify(Base* p)
 {
-    if (dynamic_cast<A*>(p))
+    if (dynamic_cast<A*>(p)) // nullptr
         std::cout << " => The object was an instance of class 'A'" << std::endl;
     else if (dynamic_cast<B*>(p))
         std::cout << " => The object was an instance of class 'B'" << std::endl;
