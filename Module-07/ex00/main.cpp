@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:17:31 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 11:20:22 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:39:40 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int main( void ) {
     return 0;
 }
 
-// templates:
-    // -> creating a generic code (function, class ...) thats not limited to only one datatype
-    // -> the function/class is non-existent until its called.
-    // -> upon calling the function, the compiler just generates a code that resembles the template by substiuting the datatypes.
-    // -> has some rules and requirements for parameters you are passing:
-        //*** if you are passing by value, the objects (the type) should be copyable. (if not you get incomphensible error mesage)
-        //*** the parameters you are passing should adhere to the computation you are doing inside that function.
-    // NOTE: these rules are prolly why its not encouraged to use tamplates excessibely
-        // -> incase of compilation error, the error message is comming from std library's ... not easy to undersand.
+/* templates:
+     -> creating a generic code (function, class ...) thats not limited to only one datatype
+     -> the function/class is non-existent until its called.
+     -> upon calling the function, the compiler just generates a code that resembles the template by substiuting the datatypes.
+     -> has some rules and requirements for parameters you are passing:
+        # if you are passing by value, the objects (the type) should be copyable. (if not you get incomphensible error mesage)
+        # the parameters you are passing should adhere to the computation you are doing inside that function.
+     NOTE: these rules are prolly why its not encouraged to use tamplates excessibely
+         -> incase of compilation error, the error message is comming from std library's ... not easy to undersand. */

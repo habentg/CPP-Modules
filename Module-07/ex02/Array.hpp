@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 12:49:40 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 14:10:26 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:46:04 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ class Array {
         size_t  size() const;
 };
 
-// template<typename T>
-// std::ostream& operator<<(std::ostream& os, const Array<T>& rhs);
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Array<T>& rhs);
 #endif // !ARRAY_HPP

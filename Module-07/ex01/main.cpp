@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:36:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 12:59:19 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:43:29 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int main(void) {
 
     std::cout << "\n\nfloat array:\n";
     std::cout << "---------------------------\n";
-    float float_arr[] = {2.238, .5, 1, 56.08, 4, 245235235, 245, 38479};
+    float float_arr[] = {2.238f, .5, 1, 56.08, 4, 245235235, 245, 38479};
     iter(float_arr, sizeof(float_arr) / sizeof(float_arr[0]), printer);
 }

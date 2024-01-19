@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:05:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 14:13:44 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:47:59 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Array<T>::Array(void) : _arr_size(0) {
 
 template<typename T>
 Array<T>::Array(unsigned int n) : _arr_size(n) {
-    this->_my_arr = new int(n);
+    this->_my_arr = new T(n);
     // this->_my_arr = ::arrayCreator(n);
     std::cout << "# Array<T> Parameterized Constructor Called #" << std::endl;
 }
@@ -49,23 +49,23 @@ Array<T>::~Array(void) {
     std::cout << "# Array<T> Destructor Called #" << std::endl;
 }
 
-// methods
+// -- methods
 template<typename T>
 size_t    Array<T>::size(void) const {
     return (this->_arr_size);
 }
 
 // '<<' overloader
-// template<typename T>
-// std::ostream& operator<<(std::ostream& os, const Array<T>& rhs) {
-//     size_t size = rhs.size();
-//     os << "{";
-//     for (size_t i = 0; i < size; i++)
-//     {
-//         os << rhs._my_arr[i];
-//         if (i != size)
-//             os << ", ";
-//     }
-//     os << "}";
-//     return os;
-// }
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Array<T>& rhs) {
+    size_t size = rhs.size();
+    os << "{";
+    for (size_t i = 0; i < size; i++)
+    {
+        os << rhs._my_arr[i];
+        if (i != size)
+            os << ", ";
+    }
+    os << "}";
+    return os;
+}
