@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:35:03 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/17 14:20:49 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:03:05 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ Base*   genC(void)
 Base*   generate(void)
 {
     const char    arr[3] = {'a', 'b', 'c'};
-    std::srand(static_cast<unsigned int>(std::time(0)));
-    int index = std::rand() % 3; // The % 3 ensures the result is in the range [0, 2]
+    std::srand(static_cast<unsigned int>(std::time(0))); // seed the RNG with the current to time so it can generate 'random' values.
+    int index = std::rand() % sizeof(arr); // The % 3 ensures the result is in the range [0, 2]
 
     switch (arr[index])
     {
@@ -95,10 +95,22 @@ void    identify(Base* p)
 // identify the REFERENCE to an object 
 void    identify(Base& p)
 {
-    if (dynamic_cast<A*>(&p))
+    try {
+        A aRef = dynamic_cast<A&>(p);
         std::cout << " => The object was an instance of class 'A'" << std::endl;
-    else if (dynamic_cast<B*>(&p))
-        std::cout << " => The object was an instance of class 'B'" << std::endl;
-    else if (dynamic_cast<C*>(&p))
+    } catch (...) {
+        // std::cout << " its not 'A'" << std::endl;
+    }
+        try {
+            B bRef = dynamic_cast<B&>(p);
+            std::cout << " => The object was an instance of class 'B'" << std::endl;
+    }  catch (...) {
+        // std::cout << " its not 'B'" << std::endl;
+    }
+    try {
+        C cRef = dynamic_cast<C&>(p);
         std::cout << " => The object was an instance of class 'C'" << std::endl;
+    } catch (...) {
+        // std::cout << " its not 'C'" << std::endl;
+    }
 }

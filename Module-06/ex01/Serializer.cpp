@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:18:33 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/17 09:31:59 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:37:53 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ uintptr_t Serializer::serialize(Data* ptr) {
     uintptr_t myPtr = reinterpret_cast<uintptr_t>(ptr);
     return (myPtr);
 }
+
 // the reverse process:
     // -> this deserialization static method is accepting an integer value, 
     // -> then, in the binary level, we are 'treating' this address as an address somewhere in the memory (Hexa).

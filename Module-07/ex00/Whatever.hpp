@@ -6,12 +6,9 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:07:40 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 11:21:02 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:14:29 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
 
 #include <iostream>
 #include <string>
@@ -37,5 +34,3 @@ T   min(T& val_1, T& val_2)
 {
     return val_1 < val_2 ? val_1 : val_2;
 }
-
-#endif // !WHATEVER_HPP

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:19:38 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 19:39:54 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:20:11 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ std::string ScalarConverter::printer(char code) const
 }
 
 std::ostream& operator<<(std::ostream& os, const ScalarConverter& conv) {
-    if (conv.isImpossible())
-        throw ScalarConverter::isImpossibleToDisplay();
     std::cout << "\n#--------------- Converting input to the four primitive datatypes -----------------#\n\n";
     os << "         char  : " << conv.printer('c') << "\n\n";
     os << "         int   : " << conv.printer('i') << "\n\n";

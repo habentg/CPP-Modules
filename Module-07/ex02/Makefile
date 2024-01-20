@@ -6,17 +6,17 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 01:45:14 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/18 13:57:11 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/19 20:53:10 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = array
 
 CC = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 RM		= rm -rf
 
-SRC = main.cpp Array.cpp
+SRC = main.cpp
 OBJDIR = obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 $(OBJDIR)/%.o: %.cpp

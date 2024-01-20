@@ -6,12 +6,9 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:27:40 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 11:53:54 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:20:29 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef ITER_HPP
-# define ITER_HPP
 
 #include <iostream>
 #include <string>
@@ -25,5 +22,3 @@ void    iter(T* arr, size_t len, void (*func)(T&))
     }
     
 }
-
-#endif // !ITER_HPP

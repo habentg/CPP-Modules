@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 04:00:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/18 15:17:21 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:25:01 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@
 #include <cstring>
 #include <stdlib.h>
 #include <iomanip>
-
-// my macros
-// # define INT_MAX 2147483647
-// # define INT_MIN -2147483648
-
-
-// typedef enum e_id {
-//     FINE,
-//     NON_DESPLAYABLE,
-//     NANF,
-//     NAND,
-//     IMPOSSIBLE
-// } t_id;
 
 typedef enum e_type {
     UNKNOWN,  // unknow datatype 
@@ -57,10 +44,8 @@ class ScalarConverter {
         int         _int;
         float       _float;
         double      _double;
-        t_type  _type;
-        const char* _input;
+        t_type      _type;
         bool        _impossible;
-        // t_id    _id[4];
     public:
         ScalarConverter(void);
         ScalarConverter(const ScalarConverter& cpy);

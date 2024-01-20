@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 01:45:14 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/18 11:45:07 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/19 20:22:18 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ RM		= rm -rf
 SRC = main.cpp
 OBJDIR = obj
 OBJ_FILES = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
+
 $(OBJDIR)/%.o: %.cpp
 	mkdir -p $(dir $@)
 	$(CC) $(FLAGS) -c $< -o $@

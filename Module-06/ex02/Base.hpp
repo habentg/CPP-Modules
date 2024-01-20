@@ -6,18 +6,16 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:34:49 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/17 10:38:42 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:11:44 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASE_HPP
 # define BASE_HPP
 
-#include <iostream>
-#include <string>
-#include <cstdint>
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 // typedef unsigned int uintptr_t;
 
@@ -32,21 +30,21 @@ class A : public Base
 {
     public:
         A();
-        virtual ~A();
+        ~A();
 };
 
 class B : public Base
 {
     public:
         B();
-        virtual ~B();
+        ~B();
 };
 
 class C : public Base
 {
     public:
         C();
-        virtual ~C();
+        ~C();
 };
 
 // methods
