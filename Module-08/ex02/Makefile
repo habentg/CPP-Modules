@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/21 18:56:33 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/21 18:57:29 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/22 18:41:54 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 # RM = rm -f
 
-SRC = main.cpp Span.cpp
+SRC = main.cpp
 OBJ = obj
 OBJ_FILES = $(addprefix $(OBJ)/, $(SRC:.cpp=.o))
 

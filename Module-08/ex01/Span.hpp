@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:35:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/21 18:24:13 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/23 21:05:14 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Span {
         void    addNumber(int value);
         unsigned int shortestSpan(void);
         unsigned int longestSpan(void);
-        void    filler(void);
+        void    rangeFiller(std::vector<int>::iterator vbegin, std::vector<int>::iterator vend);
     // exception class
         class AlreadyFull : public std::exception {
             public:

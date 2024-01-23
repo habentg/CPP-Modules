@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:52:42 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/21 14:31:56 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:34:36 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void) {
     std::cout << "}" << std::endl;
     try {
         easyfind(v, 7); // will throw an exception if the number 7 wasnt found.
-        std::cout << " => [Match found!!]" << std::endl;
+        std::cout << "     => [Match found!!]" << std::endl;
     } catch (NoMatchFound &e) {
         std::cout << e.what() << std::endl;
     }

@@ -65,6 +65,8 @@
         "utility": "cpp",
         "vector": "cpp",
         "list": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "__cxx_version": "cpp",
+        "filesystem": "cpp"
     }
 }

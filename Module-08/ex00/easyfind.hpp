@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:00:32 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/21 14:18:39 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:50:14 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <ctime>
 #include <exception>
 #include <vector>
-#include <stack>
+#include <deque>
 #include <list>
 #include <algorithm>
 
@@ -25,16 +25,22 @@ class NoMatchFound : public std::exception {
 };
 
 template<typename T>
-typename T::iterator    easyfind(T& coll, int toBeFound)
+void   easyfind(T& coll, int toBeFound)
 {
-    typename T::iterator it;
-    for (it = coll.begin(); it != coll.end(); ++it) {
-        if (*it == toBeFound)
-            return  it;
-    }
-   throw NoMatchFound();
+    typename T::iterator it = std::find(coll.begin(), coll.end(), toBeFound);
+    if (it != coll.end())
+        std::cout << "Value: " << toBeFound << " found at index: " << std::distance(coll.begin(), it);
+    else
+        throw NoMatchFound();
 }
+/*
 
+typename T::iterator it;
+    -> typename just tells the compiler that 'T::iterator' is a type i.e we dont have a class thats called "T" that has static variable "iterator".
+std::find() -> member of algorithm library
+    -> Returns an iterator to the first element in the range [first, last) that satisfies specific criteria.
+    -> it will return the iterator to the end of the collection if no match is found.
+*/
 template<typename T>
 void    printer(T& coll) {
     for (typename T::iterator it = coll.begin(); it != coll.end(); ++it)

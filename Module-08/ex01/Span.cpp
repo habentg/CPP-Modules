@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:36:58 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/21 18:54:07 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/23 21:02:17 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,12 @@ unsigned int Span::longestSpan(void) {
         throw NoNumberStored();
     if (this->_v.size() == 1)
         throw OnlyOneStored();
-    std::vector<int>::iterator o_it = this->_v.begin();
-    for (; o_it != this->_v.end(); ) {
-        std::vector<int>::iterator i_it = o_it + 1;
-        for (; i_it != this->_v.end(); ++i_it) {
-            if (static_cast<unsigned int>(std::abs(*o_it - *i_it)) > dist)
-                dist = std::abs(*o_it - *i_it);
-        }
-        ++o_it;
-    }
+    dist = *(std::max_element(this->_v.begin(), this->_v.end())) - *(std::min_element(this->_v.begin(), this->_v.end()));
     return dist;
 }
 
-void Span::filler(void) {
-    std::srand(static_cast<unsigned int>(std::time(0)));
-    for (size_t i = 0; i < this->_max_size; i++)
-    {
-        int rand = std::rand() % 1000;
-        this->addNumber(rand);
-    }
-    // this->_v.shrink_to_fit();
-    std::cout << "size of our vector: " << this->_v.size() << std::endl;
-    std::cout << "capacity of our vector: " << this->_v.capacity() << std::endl;
-}
+void    Span::rangeFiller(std::vector<int>::iterator vbegin, std::vector<int>::iterator vend) {
+    if ((this->_v.size() + std::distance(vbegin, vend)) > this->_max_size)
+        throw AlreadyFull();
+    this->_v.insert(this->_v.end(), vbegin, vend);
+};
