@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:36:58 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/23 21:02:17 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:59:00 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ unsigned int    Span::getMaxSize(void) const {
 // exception handler
 
 const char* Span::AlreadyFull::what() const throw() {
-    return "Array is full, cant add numbers elemets!";
+    return "Array is full, cant add anymore elements!";
 }
 
 const char* Span::NoNumberStored::what() const throw() {

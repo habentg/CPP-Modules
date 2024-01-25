@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:35:35 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/23 21:05:14 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:59:53 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ class Span {
         ~Span(void);
     // member funcs
         const std::vector<int>& getVector(void) const;
-        unsigned int    getMaxSize(void) const;
-        void    addNumber(int value);
-        unsigned int shortestSpan(void);
-        unsigned int longestSpan(void);
-        void    rangeFiller(std::vector<int>::iterator vbegin, std::vector<int>::iterator vend);
+        unsigned int            getMaxSize(void) const;
+        void                    addNumber(int value);
+        unsigned int            shortestSpan(void);
+        unsigned int            longestSpan(void);
+        void                    rangeFiller(std::vector<int>::iterator vbegin, std::vector<int>::iterator vend);
     // exception class
         class AlreadyFull : public std::exception {
             public:

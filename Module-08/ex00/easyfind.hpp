@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:00:32 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/23 17:50:14 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:52:04 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ template<typename T>
 void   easyfind(T& coll, int toBeFound)
 {
     typename T::iterator it = std::find(coll.begin(), coll.end(), toBeFound);
-    if (it != coll.end())
-        std::cout << "Value: " << toBeFound << " found at index: " << std::distance(coll.begin(), it);
-    else
+    if (it == coll.end())
         throw NoMatchFound();
+    std::cout << "Value: " << toBeFound << " found at index: " << std::distance(coll.begin(), it);
 }
 /*
 

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:52:42 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/23 17:34:36 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:53:45 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int main(void) {
     try {
         easyfind(v, 7); // will throw an exception if the number 7 wasnt found.
         std::cout << "     => [Match found!!]" << std::endl;
-    } catch (NoMatchFound &e) {
+    } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
+    }  catch (...) {
+        std::cout << "Some kind of Error" << std::endl;
     }
     // v.pop_back(); // removing one element from the back
     // std::cout << "size of our vector: " << v.size() << std::endl;
