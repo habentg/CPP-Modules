@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:08:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 07:37:52 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:28:24 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ const char* BitcoinExchange::NumTooLarge::what() const throw() {
 }
 const char* BitcoinExchange::HeaderNotFound::what() const throw() {
     return "Incorrect or header not found.";
+}
+const char* BitcoinExchange::EmptyDB::what() const throw() {
+    return "Database is empty.";
 }
 // const char* BitcoinExchange::BadInput::what() const throw() {
 //     return "bad input.";
@@ -101,8 +104,11 @@ void    BitcoinExchange::validate_calculate(void) {
     if (!i_file.is_open())
         throw BitcoinExchange::CantOpenFile();
     std::ifstream   db_file("data.csv");
+    std::string db_line;
     if (!db_file.is_open())
         throw BitcoinExchange::CantOpenFile();
+    if (!std::getline(db_file, db_line))
+        throw BitcoinExchange::EmptyDB();
     this->_db_map = mapper(db_file);
     // std::cout << "Map elements:" << std::endl;
     // for (std::map<std::string, double>::iterator it = this->_db_map.begin(); it != this->_db_map.end(); ++it) {

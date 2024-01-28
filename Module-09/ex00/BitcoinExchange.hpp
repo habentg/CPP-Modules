@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:01:28 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 07:30:53 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:28:30 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ class BitcoinExchange {
                 const char* what() const throw();
         };
         class HeaderNotFound : public std::exception {
+            public:
+                const char* what() const throw();
+        };
+        class EmptyDB : public std::exception {
             public:
                 const char* what() const throw();
         };
