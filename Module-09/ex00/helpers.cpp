@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:01:26 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 07:04:12 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 07:30:37 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ void    validate_date(std::string date) {
     
 }
 
-double    validate_value(std::string value, std::string date) {
-    if (value[0] == '\0')
-        throw BitcoinExchange::ValueNotGiven::whatCustom(date);
+double    validate_value(std::string value) {
     double    bitcoin_amount;
     char* endPtr;
     const char* c_str = value.c_str();

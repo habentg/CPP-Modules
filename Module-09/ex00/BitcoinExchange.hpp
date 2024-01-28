@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:01:28 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 07:04:24 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 07:30:53 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ class BitcoinExchange {
 std::vector<std::string>    split(std::string& str, char delimiter);
 std::string                 trim(std::string& str);
 void                        validate_date(std::string date);
-double                      validate_value(std::string value, std::string date);
+double                      validate_value(std::string value);
 #endif //BITCOINEXCHANGE_HPP

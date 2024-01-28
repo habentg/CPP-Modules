@@ -6,14 +6,14 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:08:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 07:05:02 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 07:37:52 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 /* Ortodox Canonical Form */
 BitcoinExchange::BitcoinExchange(const char* inputFile) {
-    this->_inputFile= inputFile; 
+    this->_inputFile = inputFile; 
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& cpy) {
@@ -22,7 +22,10 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& cpy) {
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
     if (this != &rhs)
+    {
         this->_inputFile = rhs.getInFile();
+        this->_db_map = rhs.getDBMap();
+    }
     return *this;
 }
 
@@ -115,11 +118,13 @@ void    BitcoinExchange::validate_calculate(void) {
         try {
             if (arr.size() != 2)
                 throw BitcoinExchange::BadInput::whatCustom(line);
-            validate_date(trim(arr[0]));
-            double bitcoinAmmount = validate_value(trim(arr[1]), trim(arr[0]));
-            double bitcoinValue = searchBringBVaue(trim(arr[0]));
-            double result = bitcoinValue * bitcoinAmmount;
-            std::cout << trim(arr[0]) << " => " << trim(arr[1]) << " = " << result << "\n"; 
+            std::string trimmed_date = trim(arr[0]);
+            std::string trimmed_value = trim(arr[1]);
+             if (trimmed_value[0] == '\0')
+                throw BitcoinExchange::ValueNotGiven::whatCustom(trimmed_date);
+            validate_date(trimmed_date);
+            double result = validate_value(trimmed_value) * searchBringBVaue(trimmed_date);
+            std::cout << trimmed_date << " => " << trimmed_value << " = " << result << "\n"; 
         } catch (std::string &e) {
             std::cout << "Error: " << e << std::endl;
         } catch (std::exception &e) {
