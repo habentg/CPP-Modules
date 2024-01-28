@@ -6,32 +6,20 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 07:40:44 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/29 02:08:24 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/29 02:37:05 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+// #include "PmergeMe.hpp"
 
 int main(int ac, char** av) {
-    try {
-        if (ac < 2)
-            throw RPN::NoOperandsGiven();
-        RPN obj(av);
-        // std::cout << " \n------------------------ \n";
-        // int i = 1;
-        // while (av[i])
-        // {
-        //     if (i != 1)
-        //         std::cout << ", ";
-        //     std::cout << "[" << av[i] << "]";
-        //     i++;
-        // }
-        // std::cout << " \n------------------------ \n";
-        std::cout << obj << std::endl;
-    } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
-    } catch (...) {
-        std::cout << "Error: some other error!" << std::endl;
-    }
+    // try {
+        (void)ac;
+        (void)av;
+    // } catch (std::exception &e) {
+    //     std::cout << "Error: " << e.what() << std::endl;
+    // } catch (...) {
+    //     std::cout << "Error: some other error!" << std::endl;
+    // }
     return 0;
 }

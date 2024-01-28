@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:08:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 19:28:24 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:57:24 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ const char*    BitcoinExchange::getInFile(void) const {
 std::map<std::string, double> BitcoinExchange::getDBMap(void) const {
     return this->_db_map;
 }
+
 /* overiding the 'what()' in std::exception */
 const char* BitcoinExchange::NotPositiveNum::what() const throw() {
     return "not a positive number.";
@@ -56,12 +57,15 @@ const char* BitcoinExchange::HeaderNotFound::what() const throw() {
 const char* BitcoinExchange::EmptyDB::what() const throw() {
     return "Database is empty.";
 }
-// const char* BitcoinExchange::BadInput::what() const throw() {
-//     return "bad input.";
-// }
+const char* BitcoinExchange::BadInput::what() const throw() {
+    return "bad input.";
+}
 std::string BitcoinExchange::BadInput::whatCustom(std::string val) throw() {
     std::string res = std::string("bad input. => ") + val;
     return res;
+}
+const char* BitcoinExchange::ValueNotGiven::what() const throw() {
+    return "Bitcoin ammount not given.";
 }
 std::string BitcoinExchange::ValueNotGiven::whatCustom(std::string val) throw() {
     std::string res = std::string("Bitcoin ammount not given => ") + val;

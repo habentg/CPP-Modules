@@ -6,17 +6,17 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 18:06:22 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/29 00:32:43 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/29 02:37:50 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = rpn
+NAME = PmergeMe
 
 CXX = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 # RM = rm -f
 
-SRC = main.cpp RPN.cpp helpers.cpp
+SRC = main.cpp
 OBJ = obj
 
 OBJ_FILES = $(addprefix $(OBJ)/, $(SRC:.cpp=.o))

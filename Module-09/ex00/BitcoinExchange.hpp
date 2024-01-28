@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:01:28 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 19:28:30 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:54:57 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ class BitcoinExchange {
         };
         class BadInput : public std::exception {
             public:
-                // const char* what() const throw();
+                const char* what() const throw();
                 static std::string whatCustom(std::string val) throw();
         };
         class ValueNotGiven : public std::exception {
             public:
-                // const char* what() const throw();
+                const char* what() const throw();
                 static std::string whatCustom(std::string val) throw();
         };
 };
