@@ -6,11 +6,11 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 18:06:22 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/29 00:32:43 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/01/30 15:59:35 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = rpn
+NAME = RPN
 
 CXX = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98

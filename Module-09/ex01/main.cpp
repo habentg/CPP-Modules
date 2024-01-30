@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 07:40:44 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/29 02:08:24 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:04:08 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int ac, char** av) {
     try {
-        if (ac < 2)
+        if (ac != 2)
             throw RPN::NoOperandsGiven();
         RPN obj(av);
         // std::cout << " \n------------------------ \n";

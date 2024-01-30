@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:01:26 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/28 07:30:37 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:48:33 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ bool isLeapYear(int year) {
 void    validate_date(std::string date) {
     std::vector<std::string> arr = split(date, '-');
     if (arr.size() != 3)
+        throw BitcoinExchange::BadInput::whatCustom(date);
+    std::string t_year = trim(arr[0]);
+    std::string t_month = trim(arr[1]);
+    std::string t_day = trim(arr[2]);
+    if (t_year.length() != 4 || t_month.length() != 2 || t_day.length() != 2)
         throw BitcoinExchange::BadInput::whatCustom(date);
     if (!all_digits(arr[0]) || !all_digits(arr[1]) || !all_digits(arr[2]))
         throw BitcoinExchange::BadInput::whatCustom(date);

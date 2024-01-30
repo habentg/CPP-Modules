@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:27:27 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/29 02:20:14 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:03:04 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void    RPN::postFixing(char** av) {
     std::deque<std::string> myDeque = parser(av);
     for (std::deque<std::string>::iterator it = myDeque.begin(); it != myDeque.end(); it++)
     {
+        if (*it == "")
+            continue ;
         char    *endPtr;
         double  operand = std::strtod((*it).c_str(), &endPtr);
         if (*endPtr != '\0') {
