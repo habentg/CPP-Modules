@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:01:26 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/30 14:48:33 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:37:07 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-std::vector<std::string> split(std::string& str, char delimiter) {
-    std::vector<std::string> arr;
-    std::string elem;
-    for (size_t i = 0; i < str.length(); ++i) {
-        if (str[i] == delimiter) {
-            arr.push_back(elem);
-            elem = "";
-        } else {
-            elem += str[i];
-        }
-    }
-    arr.push_back(elem); // Add the last element
-    return arr;
-}
+// std::vector<std::string> split(std::string& str, char delimiter) {
+//     std::vector<std::string> arr;
+//     std::string elem;
+//     for (size_t i = 0; i < str.length(); ++i) {
+//         if (str[i] == delimiter) {
+//             arr.push_back(elem);
+//             elem = "";
+//         } else {
+//             elem += str[i];
+//         }
+//     }
+//     arr.push_back(elem); // Add the last element
+//     return arr;
+// }
 
-std::string trim(std::string& str) {
+std::string trim(std::string str) {
     int len = str.length();
     int i = 0;
     for (; i < len; i++)
@@ -60,20 +60,27 @@ bool isLeapYear(int year) {
 }
 
 void    validate_date(std::string date) {
-    std::vector<std::string> arr = split(date, '-');
-    if (arr.size() != 3)
+    size_t first_hphen = date.find('-');
+    size_t last_hphen = date.rfind('-');
+    if (first_hphen == last_hphen)
         throw BitcoinExchange::BadInput::whatCustom(date);
-    std::string t_year = trim(arr[0]);
-    std::string t_month = trim(arr[1]);
-    std::string t_day = trim(arr[2]);
+    std::string str_year = date.substr(0, first_hphen);
+    std::string str_month = date.substr(first_hphen + 1, last_hphen - first_hphen -1);
+    std::string str_day = date.substr(last_hphen + 1);
+    std::string t_year = trim(str_year);
+    std::string t_month = trim(str_month);
+    std::string t_day = trim(str_day);
+    // std::cout << "year: [" << str_year << "] ";
+    // std::cout << "month: [" << str_month << "] ";
+    // std::cout << "day: [" << str_day << "]\n";
     if (t_year.length() != 4 || t_month.length() != 2 || t_day.length() != 2)
         throw BitcoinExchange::BadInput::whatCustom(date);
-    if (!all_digits(arr[0]) || !all_digits(arr[1]) || !all_digits(arr[2]))
+    if (!all_digits(str_year) || !all_digits(str_month) || !all_digits(str_day))
         throw BitcoinExchange::BadInput::whatCustom(date);
     int year = 0, month = 0, day = 0;
-    std::istringstream(arr[0]) >> year;
-    std::istringstream(arr[1]) >> month;
-    std::istringstream(arr[2]) >> day;
+    std::istringstream(str_year) >> year;
+    std::istringstream(str_month) >> month;
+    std::istringstream(str_day) >> day;
     if ((year < 2009 || year > 2023) || (month > 12) || (day > 31))
         throw BitcoinExchange::BadInput::whatCustom(date);
     if (month == 2 && day > 28) {

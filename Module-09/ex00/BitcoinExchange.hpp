@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:01:28 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/30 14:59:14 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:36:59 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ class BitcoinExchange {
 };
 
 // helpers
-std::vector<std::string>    split(std::string& str, char delimiter);
-std::string                 trim(std::string& str);
+// std::vector<std::string>    split(std::string& str, char delimiter);
+std::string                 trim(std::string str);
 void                        validate_date(std::string date);
 double                      validate_value(std::string value);
 #endif //BITCOINEXCHANGE_HPP

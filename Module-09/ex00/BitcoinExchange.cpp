@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:08:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/30 15:52:35 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:02:41 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,13 @@ std::map<std::string, double>   mapper(std::ifstream&   db_file) {
     std::map<std::string, double>   myMap;
     std::vector<std::string>        arr;
     std::string                     db_line;
-    double                          d;
+    double                          exchRate = 0;
     while(std::getline(db_file, db_line)) {
-        arr = split(db_line, ',');
-        std::istringstream(arr[1]) >> d;
-        if (arr[0].compare("date"))
-            myMap.insert(std::make_pair(arr[0], d)); // comeback to this, string-double, think about it
+        std::string date = db_line.substr(0, db_line.find(','));
+        std::string value = db_line.substr(db_line.find(',') + 1);
+        std::istringstream(value) >> exchRate;
+        if (date.compare("date"))
+            myMap.insert(std::make_pair(date, exchRate));
     }
     return myMap;
 }
@@ -119,24 +120,26 @@ void    BitcoinExchange::validate_calculate(void) {
         if (line != "")
             break ;
     }
-    std::vector<std::string> arr = split(line, '|');
-    if (arr.size() != 2 || (trim(arr[0]).compare("date") || trim(arr[1]).compare("value")))
+    if (line.find('|') == std::string::npos)
+        throw BitcoinExchange::HeaderNotFound();
+    std::string date = trim(line.substr(0, line.find('|')));
+    std::string value = trim(line.substr(line.find('|') + 1));
+    if ((date.compare("date") || value.compare("value")))
         throw BitcoinExchange::HeaderNotFound();
     this->_db_map = mapper(db_file);
     while(std::getline(i_file, line)) {
-        if (line == "")
+        if (line == "") // to skip empty lines
             continue ;
-        std::vector<std::string> arr = split(line, '|');
         try {
-            if (arr.size() != 2)
+            if (line.find('|') == std::string::npos)
                 throw BitcoinExchange::BadInput::whatCustom(line);
-            std::string trimmed_date = trim(arr[0]);
-            std::string trimmed_value = trim(arr[1]);
-             if (trimmed_value[0] == '\0')
-                throw BitcoinExchange::ValueNotGiven::whatCustom(trimmed_date);
-            validate_date(trimmed_date);
-            double result = validate_value(trimmed_value) * searchBringBVaue(trimmed_date);
-            std::cout << trimmed_date << " => " << trimmed_value << " = " << result << "\n"; 
+            std::string date = trim(line.substr(0, line.find('|')));
+            std::string value = trim(line.substr(line.find('|') + 1));
+             if (value[0] == '\0')
+                throw BitcoinExchange::ValueNotGiven::whatCustom(date);
+            validate_date(date);
+            double result = validate_value(value) * searchBringBVaue(date);
+            std::cout << date << " => " << value << " = " << result << "\n"; 
         } catch (std::string &e) {
             std::cout << "Error: " << e << std::endl;
         } catch (std::exception &e) {
