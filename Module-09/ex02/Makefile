@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 18:06:22 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/29 02:37:50 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/03/22 05:01:03 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 # RM = rm -f
 
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 OBJ = obj
 
 OBJ_FILES = $(addprefix $(OBJ)/, $(SRC:.cpp=.o))
@@ -30,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(CXX) $(FLAGS) $(OBJ_FILES) -o $@
 
-clean: $(OBJ)
+clean:
 	$(RM)r $(OBJ)
 
 fclean: clean

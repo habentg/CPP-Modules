@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 18:06:22 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/27 23:06:24 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/03/22 00:53:49 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,11 @@ FLAGS = -Wall -Werror -Wextra -std=c++98
 # RM = rm -f
 
 SRC = main.cpp BitcoinExchange.cpp helpers.cpp
+# Object files directory:
 OBJ = obj
 
-OBJ_FILES = $(addprefix $(OBJ)/, $(SRC:.cpp=.o))
+# Object files:
+OBJ_FILES = $(patsubst %.cpp, $(OBJ)/%.o, $(notdir $(SRC)))
 
 $(OBJ)/%.o: %.cpp
 	mkdir -p $(dir $@)
@@ -30,7 +32,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(CXX) $(FLAGS) $(OBJ_FILES) -o $@
 
-clean: $(OBJ)
+clean:
 	$(RM)r $(OBJ)
 
 fclean: clean

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:01:28 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/21 10:36:59 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/22 09:22:48 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 class BitcoinExchange {
     private:
-        const char*  _inputFile;
+        const char*                     _inputFile;
         std::map<std::string, double>   _db_map;
         BitcoinExchange(void);
     public:
@@ -39,7 +39,7 @@ class BitcoinExchange {
         const char*                      getInFile(void) const;
         std::map<std::string, double>    getDBMap(void) const;
         void                             validate_calculate(void);
-        double  searchBringBVaue(std::string date);
+        double                           searchBringBVaue(std::string date);
         // exceptions
         class CantOpenFile : public std::exception {
             public:

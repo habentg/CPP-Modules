@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:27:27 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/30 16:03:04 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/22 10:21:57 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,9 @@ std::stack<double> RPN::getStack(void) const {
 
 std::deque<std::string>    RPN::parser(char** av) {
     std::deque<std::string>  myDeque;
-    int                 i = 1;
     std::string myStr = std::string(av[1]);
     std::deque<std::string> splitted = split(myStr, ' ');
     myDeque.insert(myDeque.end(), splitted.begin(), splitted.end());
-    i++;
-    while (av[i])
-    {
-        myStr = std::string(av[i]);
-        splitted = split(myStr, ' ');
-        myDeque.insert(myDeque.end(), splitted.begin(), splitted.end());
-        i++;
-    }
-    // for (std::deque<std::string>::iterator it = myDeque.begin(); it != myDeque.end(); it++)
-    // {
-    //     if (it != myDeque.begin())
-    //         std::cout << ", ";
-    //     std::cout << "[" << *it << "]";
-    // }
     return myDeque;    
 }
 
@@ -82,17 +67,27 @@ void RPN::doOperation(std::string& opertr) {
     this->_s.pop();
     double s_value = this->_s.top();
     this->_s.pop();
-    size_t dividend;
     if (!opertr.compare("+"))
         this->_s.push(f_value + s_value);
     else if (!opertr.compare("-"))
         this->_s.push(s_value - f_value);
     else if (!opertr.compare("/")) {
-        dividend = static_cast<size_t>(s_value / f_value);
+        size_t dividend = static_cast<size_t>(s_value / f_value);
         this->_s.push(dividend);
     }
     else if (!opertr.compare("*"))
         this->_s.push(s_value * f_value);
+}
+
+void printDeque(std::deque<std::string>& dq) {
+    std::cout << "deque = [";
+    std::deque<std::string>::iterator it = dq.begin();
+    for (; it != dq.end(); ++it) {
+        if (it != dq.begin())
+            std::cout << ", ";
+        std::cout << *it;
+    }
+    std::cout << "]\n";
 }
 
 /* RPN calculation explanation - Briefly: 
@@ -106,6 +101,7 @@ void RPN::doOperation(std::string& opertr) {
 */
 void    RPN::postFixing(char** av) {
     std::deque<std::string> myDeque = parser(av);
+    // printDeque(myDeque); 
     for (std::deque<std::string>::iterator it = myDeque.begin(); it != myDeque.end(); it++)
     {
         if (*it == "")
@@ -117,11 +113,9 @@ void    RPN::postFixing(char** av) {
                 doOperation(*it);
             else
                 throw RPN::InvalidValue();
-        } else
-        {
-            std::cout << "value: " << *it << std::endl;
+        } else {
+            // std::cout << "value: " << *it << std::endl;
             this->_s.push(operand);
         }
     }
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:01:26 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/21 10:37:07 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/22 09:44:01 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,18 @@ bool isLeapYear(int year) {
 void    validate_date(std::string date) {
     size_t first_hphen = date.find('-');
     size_t last_hphen = date.rfind('-');
-    if (first_hphen == last_hphen)
+    if (date.find('-') == std::string::npos || first_hphen == last_hphen)
         throw BitcoinExchange::BadInput::whatCustom(date);
-    std::string str_year = date.substr(0, first_hphen);
-    std::string str_month = date.substr(first_hphen + 1, last_hphen - first_hphen -1);
-    std::string str_day = date.substr(last_hphen + 1);
-    std::string t_year = trim(str_year);
-    std::string t_month = trim(str_month);
-    std::string t_day = trim(str_day);
-    // std::cout << "year: [" << str_year << "] ";
-    // std::cout << "month: [" << str_month << "] ";
-    // std::cout << "day: [" << str_day << "]\n";
-    if (t_year.length() != 4 || t_month.length() != 2 || t_day.length() != 2)
-        throw BitcoinExchange::BadInput::whatCustom(date);
-    if (!all_digits(str_year) || !all_digits(str_month) || !all_digits(str_day))
+    std::string t_year = trim(date.substr(0, first_hphen));
+    std::string t_month = trim(date.substr(first_hphen + 1, last_hphen - first_hphen -1));
+    std::string t_day = trim(date.substr(last_hphen + 1));
+    if (!all_digits(t_year) || !all_digits(t_month) || !all_digits(t_day))
         throw BitcoinExchange::BadInput::whatCustom(date);
     int year = 0, month = 0, day = 0;
-    std::istringstream(str_year) >> year;
-    std::istringstream(str_month) >> month;
-    std::istringstream(str_day) >> day;
-    if ((year < 2009 || year > 2023) || (month > 12) || (day > 31))
+    std::istringstream(t_year) >> year;
+    std::istringstream(t_month) >> month;
+    std::istringstream(t_day) >> day;
+    if ((year < 2009 || year > 2024) || (month > 12) || (day > 31))
         throw BitcoinExchange::BadInput::whatCustom(date);
     if (month == 2 && day > 28) {
         if (isLeapYear(year) && day > 29)
@@ -102,6 +94,8 @@ double    validate_value(std::string value) {
     if (*endPtr != '\0')
         throw BitcoinExchange::BadInput::whatCustom(value);
     std::istringstream(value) >> bitcoin_amount;
+    if (value[0] == '.' || value[value.size() - 1] == '.')
+        throw BitcoinExchange::BadInput::whatCustom(value);
     if (bitcoin_amount < 0)
         throw BitcoinExchange::NotPositiveNum();
     if (bitcoin_amount > 1000)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:08:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/21 10:02:41 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/22 09:27:36 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,14 +128,16 @@ void    BitcoinExchange::validate_calculate(void) {
         throw BitcoinExchange::HeaderNotFound();
     this->_db_map = mapper(db_file);
     while(std::getline(i_file, line)) {
-        if (line == "") // to skip empty lines
+        if (trim(line) == "") // to skip empty lines
             continue ;
         try {
             if (line.find('|') == std::string::npos)
                 throw BitcoinExchange::BadInput::whatCustom(line);
             std::string date = trim(line.substr(0, line.find('|')));
             std::string value = trim(line.substr(line.find('|') + 1));
-             if (value[0] == '\0')
+            if (date.empty())
+                throw BitcoinExchange::BadInput::whatCustom("Date not given!");
+            if (value[0] == '\0')
                 throw BitcoinExchange::ValueNotGiven::whatCustom(date);
             validate_date(date);
             double result = validate_value(value) * searchBringBVaue(date);

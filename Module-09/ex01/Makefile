@@ -6,7 +6,7 @@
 #    By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 18:06:22 by hatesfam          #+#    #+#              #
-#    Updated: 2024/01/30 15:59:35 by hatesfam         ###   ########.fr        #
+#    Updated: 2024/03/22 00:54:45 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(CXX) $(FLAGS) $(OBJ_FILES) -o $@
 
-clean: $(OBJ)
+clean:
 	$(RM)r $(OBJ)
 
 fclean: clean
