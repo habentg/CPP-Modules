@@ -6,26 +6,21 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 02:27:42 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/22 07:17:01 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 07:14:51 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void) {
-    
+PmergeMe::PmergeMe(int ac, char **av) {
+    for (int i = 1; i < ac; i++) {
+        std::vector<unsigned int> tmp = split(std::string(av[i]), ' ');
+        this->vect.insert(vect.end(), tmp.begin(), tmp.end());
+        this->lst.insert(lst.end(), tmp.begin(), tmp.end());
+    }
 }
 PmergeMe::~PmergeMe(void) {
-    
-}
-
-PmergeMe::PmergeMe(const PmergeMe& rhs) {
-    *this = rhs;
-}
-
-PmergeMe& PmergeMe::operator=(const PmergeMe& rhs) {
-    (void)rhs;
-    return *this;
+    // std::cout << "Obj destructed!\n";   
 }
 
 const char* PmergeMe::NotEnoughParams::what() const throw(){
@@ -36,7 +31,7 @@ const char* PmergeMe::InvalidInput::what() const throw(){
 }
 
 void printVector(std::vector<unsigned int>& vec) {
-    std::cout << "[";
+    std::cout << "Vector: [";
     std::vector<unsigned int>::iterator it = vec.begin();
     for (; it != vec.end(); ++it) {
         if (it != vec.begin())
@@ -47,7 +42,7 @@ void printVector(std::vector<unsigned int>& vec) {
 }
 
 void printList(std::list<unsigned int>& lst) {
-    std::cout << "[";
+    std::cout << "List: [";
     std::list<unsigned int>::iterator it = lst.begin();
     for (; it != lst.end(); ++it) {
         if (it != lst.begin())
@@ -87,61 +82,48 @@ void vectorInsertionSort(std::vector<unsigned int>& vect) {
     -> we compare corosponding indexes, we save the smaller value and we pop it from its array. (we do this until one array is empty)
     -> the we just add the remaining ones. (we dont need to compare coz it was sorted --- remember)
 */
-std::vector<unsigned int> mergeVector(std::vector<unsigned int>& leftVec, std::vector<unsigned int>& rightVec) {
-    std::vector<unsigned int> result;
-    // std::cout << "left: ";
-    // printVector(leftVec);
-    // std::cout << "right: ";
-    // printVector(rightVec);
+void mergeVector(std::vector<unsigned int>& mainVect, std::vector<unsigned int>& leftVec, std::vector<unsigned int>& rightVec) {
     while (!leftVec.empty() && !rightVec.empty()) {
         if (leftVec.front() <= rightVec.front()) {
-            result.push_back(leftVec.front());
+            mainVect.push_back(leftVec.front());
             leftVec.erase(leftVec.begin());
         }
         else {
-            result.push_back(rightVec.front());
+            mainVect.push_back(rightVec.front());
             rightVec.erase(rightVec.begin());
         }
     }
     while (!leftVec.empty()) {
-        result.push_back(leftVec.front());
+        mainVect.push_back(leftVec.front());
         leftVec.erase(leftVec.begin());
     }
     while (!rightVec.empty()) {
-        result.push_back(rightVec.front());
+        mainVect.push_back(rightVec.front());
         rightVec.erase(rightVec.begin());
     }
-    // std::cout << " ==> Merged left and right: ";
-    // printVector(result);
-    return result;
 }
 
 /* recursively dividing the array into two and merging */
-std::vector<unsigned int> vectorMI(std::vector<unsigned int>& vect) {
+void vectorMI(std::vector<unsigned int>& vect) {
     if (vect.size() <= 10) {
         if (vect.size() <= 1)
-            return vect;
+            return ;
         vectorInsertionSort(vect);
-        return vect;
+        return ;
     }
     size_t mp = vect.size() / 2;
     std::vector<unsigned int> leftVec(vect.begin(), vect.begin() + mp);
     std::vector<unsigned int> rightVec(vect.begin() + mp, vect.end());
-    leftVec = vectorMI(leftVec);
-    rightVec = vectorMI(rightVec);
-    std::vector<unsigned int> result = mergeVector(leftVec, rightVec);
-    return result;
+    vectorMI(leftVec);
+    vectorMI(rightVec);
+    vect.clear();
+    mergeVector(vect, leftVec, rightVec);
 }
-void PmergeMe::MIsortVector(std::vector<unsigned int>& vect) {
-    std::cout << "Before = ";
-    printVector(vect);
-    std::clock_t start = std::clock(); // starting the  counter clock
-    std::vector<unsigned int> sortedVec = vectorMI(vect);
-    std::cout << "After = ";
-    printVector(sortedVec);
-    double time_taken = static_cast<double>(std::clock() - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
-    std::cout << "Time to process a range of " << sortedVec.size() << " elements " 
-        << "with std::vector<unsigned int> : " << time_taken << " µs" << std::endl;
+void PmergeMe::sortVector(std::vector<unsigned int>& vect) {
+    clock_t start = std::clock(); // starting the  counter clock
+    vectorMI(vect);
+    clock_t done = std::clock(); // stoping the  counter clock
+    this->vecSortingTime = static_cast<double>(done - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
 }
 
 /* -----------------------------------------------------------------------------------------------------*/
@@ -167,6 +149,46 @@ void listInsertionSort(std::list<unsigned int>& lst) {
     }
 }
 
-void PmergeMe::MIsortList(std::list<unsigned int>& lst) {
-    (void)lst;
+void mergeList(std::list<unsigned int>& mainList, std::list<unsigned int>& leftLst, std::list<unsigned int>& rightLst) {
+    std::list<unsigned int>::iterator leftIt = leftLst.begin();
+	std::list<unsigned int>::iterator rightIt = rightLst.begin();
+
+	/* Comparing elements and sorting them */
+	while (leftIt != leftLst.end() && rightIt != rightLst.end()) {
+		if (*leftIt < *rightIt) {
+			mainList.push_back(*leftIt);
+			leftIt++;
+		} else {
+			mainList.push_back(*rightIt);
+			rightIt++;  
+		}
+	}
+	/* Adding remaining elements out of range */
+	while (leftIt != leftLst.end()) {
+		mainList.push_back(*leftIt);
+		leftIt++;
+	}
+	while (rightIt != rightLst.end()) {
+		mainList.push_back(*rightIt);
+		rightIt++;
+	}
+}
+
+void listMI(std::list<unsigned int>& lst) {
+    if (lst.size() <= 1)
+        return ;
+    std::list<unsigned int>::iterator mp = lst.begin();
+    std::advance(mp, lst.size() / 2);
+    std::list<unsigned int> left(lst.begin(), mp);
+    std::list<unsigned int> right(mp, lst.end());
+    listMI(left);
+    listMI(right);
+    lst.clear();
+    mergeList(lst, left, right);
+}
+void PmergeMe::sortList(std::list<unsigned int>& lst) {
+    clock_t start = std::clock();  // starting the  counter clock
+    listMI(lst);
+    clock_t done = std::clock();  // stoping the  counter clock
+    this->lstSortingTime = static_cast<double>(done - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
 }
