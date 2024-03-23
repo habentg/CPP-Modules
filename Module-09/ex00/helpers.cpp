@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:01:26 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/22 09:44:01 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 09:02:37 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ bool isLeapYear(int year) {
 void    validate_date(std::string date) {
     size_t first_hphen = date.find('-');
     size_t last_hphen = date.rfind('-');
-    if (date.find('-') == std::string::npos || first_hphen == last_hphen)
+    if (date.size() != 10 || date.find('-') == std::string::npos || first_hphen == last_hphen)
         throw BitcoinExchange::BadInput::whatCustom(date);
     std::string t_year = trim(date.substr(0, first_hphen));
     std::string t_month = trim(date.substr(first_hphen + 1, last_hphen - first_hphen -1));
     std::string t_day = trim(date.substr(last_hphen + 1));
-    if (!all_digits(t_year) || !all_digits(t_month) || !all_digits(t_day))
+    if (t_year.size() != 4 || t_month.size() != 2 || t_day.size() != 2 || \
+        !all_digits(t_year) || !all_digits(t_month) || !all_digits(t_day))
         throw BitcoinExchange::BadInput::whatCustom(date);
     int year = 0, month = 0, day = 0;
     std::istringstream(t_year) >> year;
