@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:08:04 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/23 09:01:37 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 10:18:26 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
 }
 
 BitcoinExchange::~BitcoinExchange(void) {
+    // std::cout << "obj destructor\n";
 }
 
 /* member methods implementation */
@@ -58,10 +59,10 @@ const char* BitcoinExchange::EmptyDB::what() const throw() {
     return "Database is empty.";
 }
 const char* BitcoinExchange::BadInput::what() const throw() {
-    return "bad input.";
+    return "bad input";
 }
 std::string BitcoinExchange::BadInput::whatCustom(std::string val) throw() {
-    std::string res = std::string("bad input. => ") + val;
+    std::string res = std::string("bad input => ") + val;
     return res;
 }
 const char* BitcoinExchange::ValueNotGiven::what() const throw() {
@@ -76,7 +77,6 @@ std::string BitcoinExchange::ValueNotGiven::whatCustom(std::string val) throw() 
     a map is a container that holds its value in a sorted (unique)key-value pair manner */
 std::map<std::string, double>   mapper(std::ifstream&   db_file) { 
     std::map<std::string, double>   myMap;
-    std::vector<std::string>        arr;
     std::string                     db_line;
     double                          exchRate = 0;
     while(std::getline(db_file, db_line)) {
@@ -105,7 +105,7 @@ double  BitcoinExchange::searchBringBVaue(std::string date) {
 
 /* input file and the csv file check && calculate*/
 void    BitcoinExchange::validate_calculate(void) {
-    std::ifstream   db_file("data.csv");
+    std::ifstream   db_file("data.csv"); // we just need to read
     std::string db_line;
     if (!db_file.is_open())
         throw BitcoinExchange::CantOpenFile();
@@ -117,16 +117,18 @@ void    BitcoinExchange::validate_calculate(void) {
         throw BitcoinExchange::CantOpenFile();
     while (std::getline(i_file, line))
     {
-        if (line != "")
+        if (!trim(line).empty())
             break ;
     }
-    if (line.find('|') == std::string::npos)
+    if (line.find('|') == std::string::npos) {
         throw BitcoinExchange::HeaderNotFound();
+    }
     std::string date = trim(line.substr(0, line.find('|')));
     std::string value = trim(line.substr(line.find('|') + 1));
-    if ((date.compare("date") || value.compare("value")))
+    if (date.compare("date") || value.compare("value")) {
         throw BitcoinExchange::HeaderNotFound();
-    this->_db_map = mapper(db_file);
+    }
+    this->_db_map = mapper(db_file); // save our db in key-value format for better look up
     while(std::getline(i_file, line)) {
         if (trim(line) == "") // to skip empty lines
             continue ;

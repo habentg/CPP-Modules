@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:15:44 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/22 10:06:04 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 10:20:24 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ class RPN {
         std::stack<double>  _s;
         // char**              _arrValues;
         RPN(void);
+        RPN(const RPN& cpy);
+        RPN& operator=(const RPN& rhs);
     public:
         //OCF
         RPN(char **av);
-        RPN(const RPN& cpy);
-        RPN& operator=(const RPN& rhs);
         ~RPN(void);
         // methods
         std::stack<double> getStack(void) const;

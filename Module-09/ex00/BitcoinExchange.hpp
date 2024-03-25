@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 21:01:28 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/22 09:22:48 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 09:47:19 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ class BitcoinExchange {
         const char*                     _inputFile;
         std::map<std::string, double>   _db_map;
         BitcoinExchange(void);
+        BitcoinExchange(const BitcoinExchange& cpy);
+        BitcoinExchange& operator=(const BitcoinExchange& rhs);
     public:
         //OCF
         BitcoinExchange(const char* inputFile);
-        BitcoinExchange(const BitcoinExchange& cpy);
-        BitcoinExchange& operator=(const BitcoinExchange& rhs);
         ~BitcoinExchange(void);
         // member functions
         const char*                      getInFile(void) const;
@@ -74,7 +74,6 @@ class BitcoinExchange {
 };
 
 // helpers
-// std::vector<std::string>    split(std::string& str, char delimiter);
 std::string                 trim(std::string str);
 void                        validate_date(std::string date);
 double                      validate_value(std::string value);

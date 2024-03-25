@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 02:34:52 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/23 07:28:39 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 10:42:14 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,23 @@
 # include <exception>
 # include <vector>
 # include <list>
-# define UINT32_MAXVALUE 4294967295
+# include <climits>
+
 class PmergeMe {
     private:
         PmergeMe();  
         PmergeMe(const PmergeMe& rhs);  
         PmergeMe& operator=(const PmergeMe& rhs);
     public:
-        std::vector<unsigned int> vect;
-        std::list<unsigned int> lst;
+        std::vector<unsigned long> vect;
+        std::list<unsigned long> lst;
         double  vecSortingTime;
         double  lstSortingTime;
         ~PmergeMe();  
         PmergeMe(int ac, char **av);  
 
-        void sortVector(std::vector<unsigned int>& vect);
-        void sortList(std::list<unsigned int>& lst);
+        void sortVector(std::vector<unsigned long>& vect);
+        void sortList(std::list<unsigned long>& lst);
 
         class NotEnoughParams : public std::exception {
             public:
@@ -49,7 +50,8 @@ class PmergeMe {
         };
 };
 
-void    printVector(std::vector<unsigned int>& vec);
-void    printList(std::list<unsigned int>& lst);
-std::vector<unsigned int> split(std::string str, char delimiter);
+void    printVector(std::vector<unsigned long>& vec);
+void    printList(std::list<unsigned long>& lst);
+std::vector<unsigned long> split(std::string str, char delimiter);
+std::string trim(std::string str);
 #endif // !PMERGEME_HPP

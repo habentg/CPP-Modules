@@ -6,26 +6,11 @@
 /*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:01:26 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/03/23 09:02:37 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/03/23 09:48:07 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-// std::vector<std::string> split(std::string& str, char delimiter) {
-//     std::vector<std::string> arr;
-//     std::string elem;
-//     for (size_t i = 0; i < str.length(); ++i) {
-//         if (str[i] == delimiter) {
-//             arr.push_back(elem);
-//             elem = "";
-//         } else {
-//             elem += str[i];
-//         }
-//     }
-//     arr.push_back(elem); // Add the last element
-//     return arr;
-// }
 
 std::string trim(std::string str) {
     int len = str.length();
