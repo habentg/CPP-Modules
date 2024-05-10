@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatesfam <hatesfam@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 04:00:41 by hatesfam          #+#    #+#             */
-/*   Updated: 2024/01/19 16:25:01 by hatesfam         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:16:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ typedef enum e_type {
 }   t_type;
 
 class ScalarConverter {
-    protected:
+    private:
         char        _char;
         int         _int;
         float       _float;
         double      _double;
         t_type      _type;
         bool        _impossible;
-    public:
         ScalarConverter(void);
         ScalarConverter(const ScalarConverter& cpy);
         ScalarConverter operator=(const ScalarConverter& rhs);
+    public:
         ~ScalarConverter();
         // static method
         std::string printer(char code) const;
